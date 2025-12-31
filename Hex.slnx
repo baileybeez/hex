@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/Examples/">
+    <File Path="fibonacci.hex" />
+  </Folder>
+  <Project Path="Arcanum/Arcanum.csproj" />
+  <Project Path="Hex/Hex.csproj" />
+  <Project Path="HexTests/HexTests.csproj" />
+</Solution>

@@ -1,0 +1,21 @@
+
+ritual FIBO shall manifest ash
+conjure cauldron
+	place earth salt GEN stir clockwise
+circlework
+	conjure fire salt A as 1
+	conjure fire salt B as 1
+	conjure fire salt C as 0
+
+	conjure fire salt CYCLE as GEN
+	cast circle while CYCLE > 0
+		C is B + A
+		A is B
+		B is C
+
+		whisper A
+		whisper "\n"
+		diminish CYCLE
+	this I command
+
+this I command

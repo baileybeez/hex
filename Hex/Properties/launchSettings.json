@@ -1,0 +1,16 @@
+{
+  "profiles": {
+    "WSL": {
+      "commandName": "WSL2",
+      "distributionName": ""
+    },
+    "Hex Run": {
+      "commandName": "Project",
+      "commandLineArgs": "cast .\\fibonacci.codex"
+    },
+    "Hex Repl": {
+      "commandName": "Project",
+      "commandLineArgs": "inkwell"
+    }
+  }
+}
