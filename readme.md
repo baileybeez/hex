@@ -5,6 +5,8 @@ Hex is an esoteric programming language for writing elegant programs in arcane s
 > [!WARNING]
 > Hex is an evolving project and is subject to functionality and/or syntax changes at any moment. Hex is far from complete and the CLI may crash or be missing features. Keep your expectations low.
 
+![CI Tests](https://github.com/baileybeez/hex/actions/workflows/dotnet.yml/badge.svg)
+
 ### Milestones
 
 - [x] REPL
