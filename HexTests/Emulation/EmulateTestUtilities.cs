@@ -1,8 +1,9 @@
-﻿using Hex.Arcanum.Lexer;
-using Hex.Arcanum.Parser;
-using Hex.Arcanum.IR;
+﻿using Hex.Arcanum.Common;
 using Hex.Arcanum.Emulator;
 using Hex.Arcanum.Interfaces;
+using Hex.Arcanum.IR;
+using Hex.Arcanum.Lexer;
+using Hex.Arcanum.Parser;
 
 namespace HexTests.Emulation
 {
@@ -19,11 +20,10 @@ namespace HexTests.Emulation
 			var lexList = lexer.Run(src);
 			var scope = parse.Run(lexList);
 			var irList = lower.Run(scope);
-			var entryPoint = scope.FindEntryPoint();
 
 			_emu.SetConsole(console);
 			_emu.Reset();
-			_emu.Run(irList, entryPoint?.FunctionName);
+			_emu.Run(irList);
 			if (console != null)
 				console.Flush();
 		}

@@ -1,4 +1,5 @@
 ﻿
+using Hex.Arcanum.Common;
 using Hex.Arcanum.Emulator;
 using Hex.Arcanum.Inscriber;
 using Hex.Arcanum.IR;
@@ -19,28 +20,46 @@ namespace Hex.App
 
 			try
 			{
-				string src = File.ReadAllText(_input).Replace("\\n", "\n");
-
+				List<IRInst> irList = ProcessInputFile();
 				var console = new StandardConsole();
-				var lexer = new Lexer();
-				var parse = new Parser();
-				var lower = new IRLowerer();
 				var emulator = new Emulator();
-
-				var lexList = lexer.Run(src);
-				var scope = parse.Run(lexList);
-				var irList = lower.Run(scope);
-				var entryPoint = scope.FindEntryPoint();
 
 				emulator.SetConsole(console);
 				emulator.Reset();
-				emulator.Run(irList, entryPoint?.FunctionName);
+				emulator.Run(irList);
 				console.Flush();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex.Message);
 			}
+		}
+
+		public List<IRInst> ProcessInputFile()
+		{
+			string ext = Path.GetExtension(_input);
+			switch (ext)
+			{
+				default:
+					throw new Exception("Invalid input file provided.");
+				case ".codex":
+					return CompileFromFile();
+				case ".ir":
+					return IRFile.Load(_input);
+			}
+		}
+
+		public List<IRInst> CompileFromFile()
+		{
+			var lexer = new Lexer();
+			var parse = new Parser();
+			var lower = new IRLowerer();
+
+			var src = File.ReadAllText(_input).Replace("\\n", "\n");
+			var lexList = lexer.Run(src);
+			var scope = parse.Run(lexList);
+			
+			return lower.Run(scope);
 		}
 	}
 }

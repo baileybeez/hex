@@ -29,14 +29,9 @@ namespace Hex.Arcanum.Emulator
 			_memory.Clear();
 		}
 
-		public void Run(List<IRInst> irList, string? entryPoint = null)
+		public void Run(List<IRInst> irList)
 		{
 			_instList.Clear();
-			if (entryPoint != null)
-			{
-				_instList.Add(new IRInst(OpCode.Call, string.Empty, $"func_{entryPoint}", null));
-				_instList.Add(new IRInst(OpCode.Exit, string.Empty, null, null));
-			}
 			_instList.AddRange(irList);
 
 			_labelMap.Clear();
@@ -56,9 +51,14 @@ namespace Hex.Arcanum.Emulator
 				EmulateInstruction(_instList[_ip]);
 				_ip++;
 			}
+		}
 
-			if (entryPoint == null && _memory.Count > 0)
-				Console.WriteLine(GetValue(_memory.Keys.Last()));
+		public object GetLastMemoryValue()
+		{
+			if (_memory.Count > 0)
+				return GetValue(_memory.Keys.Last());
+
+			return "";
 		}
 
 		public void DumpMemory()
