@@ -11,7 +11,7 @@ Hex is an esoteric programming language for writing elegant programs in arcane s
 
 - [x] REPL
 - [x] CLI offering ability to emulate codex files.
-- [ ] support for compilation to IR files
+- [x] support for compilation to IR files
 - [ ] compilation to machine code
 - [ ] self-hosted compiler
 
