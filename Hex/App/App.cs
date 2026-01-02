@@ -33,6 +33,10 @@ namespace Hex.App
 				case kCmd_Convert:
 					Convert();
 					break;
+
+				case kCmd_Compile:
+					Compile();
+					break;
 			}
 
 			return 0;

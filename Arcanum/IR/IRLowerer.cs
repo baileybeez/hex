@@ -28,7 +28,15 @@ namespace Hex.Arcanum.IR
 		public List<IRInst> Run(Scope rootScope)
 		{
 			_instList.Clear();
+
+			var entryPoint = rootScope.FindEntryPoint()?.FunctionName;
+			if (entryPoint != null)
+			{
+				_instList.Add(new IRInst(OpCode.Call, string.Empty, $"func_{entryPoint}", null));
+				_instList.Add(new IRInst(OpCode.Exit, string.Empty, null, null));
+			}
 			LowerExpression(rootScope);
+
 			return _instList;
 		}
 

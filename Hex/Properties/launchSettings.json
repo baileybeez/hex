@@ -6,11 +6,15 @@
     },
     "Hex Run": {
       "commandName": "Project",
-      "commandLineArgs": "cast .\\fibonacci.codex"
+      "commandLineArgs": "invoke .\\fibonacci.ir"
     },
     "Hex Repl": {
       "commandName": "Project",
       "commandLineArgs": "inkwell"
+    },
+    "Hex Compile": {
+      "commandName": "Project",
+      "commandLineArgs": "bind .\\fibonacci.codex"
     }
   }
 }

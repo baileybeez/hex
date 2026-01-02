@@ -1,10 +1,11 @@
 ﻿using Hex.Arcanum.Common;
+using Hex.Arcanum.Emulator;
+using Hex.Arcanum.Exceptions;
+using Hex.Arcanum.Inscriber;
+using Hex.Arcanum.IR;
 using Hex.Arcanum.Lexer;
 using Hex.Arcanum.Parser;
-using Hex.Arcanum.Exceptions;
-using Hex.Arcanum.Emulator;
-using Hex.Arcanum.IR;
-using Hex.Arcanum.Inscriber;
+using System;
 
 namespace Hex.App
 {
@@ -68,9 +69,11 @@ namespace Hex.App
 						Console.WriteLine($"{inst.opCode} {inst.result} {inst.leftOperand ?? ""} {inst.rightOperand ?? ""}");
 				}
 
-				var entryPoint = scope.FindEntryPoint();
+				_emu.Run(irList);
 
-				_emu.Run(irList, entryPoint?.FunctionName);
+				var entryPoint = scope.FindEntryPoint();
+				if (entryPoint == null)
+					Console.WriteLine(_emu.GetLastMemoryValue());
 			}
 			catch (HexException hex)
 			{
