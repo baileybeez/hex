@@ -14,6 +14,12 @@ namespace HexTests.IR
 		IRLowerer _lower = new();
 		RegisterAllocator _alloc = new();
 
+		[SetUp] 
+		public void Prep()
+		{
+			_alloc.Reset();
+		}
+
 		public void AssertRange(LiveRange range, string varName, int si, int ei)
 		{
 			Assert.That(range.VarName, Is.EqualTo(varName));

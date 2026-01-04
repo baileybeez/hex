@@ -8,6 +8,14 @@ namespace Hex.Arcanum.Allocator
 		private Dictionary<string, LiveRange> _allocMap = new();
 
 		public RegisterAllocator() { }
+		
+		public void Reset()
+		{
+			_rangeMap.Clear();
+			_activeList.Clear();
+			_usedCalleeList.Clear();
+			_allocMap.Clear();
+		}
 
 		public List<IRInst> ProcessAllocations(List<IRInst> irList, RegAllocateResult resAllocs)
 		{
