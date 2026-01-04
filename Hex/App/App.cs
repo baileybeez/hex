@@ -9,7 +9,7 @@ namespace Hex.App
 			ParseParams(args);
 			if (_cmd == kCmd_Execute)
 			{
-				Cast();
+				Invoke();
 				return 0;
 			}
 
