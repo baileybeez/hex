@@ -11,14 +11,19 @@ namespace Hex.Arcanum.IR
 		{
 			var fncHeader = AssertValid<FunctionDeclaration>(expr);
 			Emit(OpCode.Label, $"func_{fncHeader.FunctionName}");
+			Emit(OpCode.EnterFunc, String.Empty, "0");
 
 			_paramMap.Clear();
 			for (int idx = fncHeader.Parameters.Count - 1; idx >= 0; idx--)
 			{
-				var temp = NewTemp();
 				var param = fncHeader.Parameters[idx];
+				var temp = NewTemp();
 
-				Emit(OpCode.CopyParam, temp, param.Name);
+				if (idx < 6)
+					Emit(OpCode.CopyFromReg, temp, param.Location);
+				else
+					Emit(OpCode.LoadFromStack, temp, param.Location);
+				
 				_paramMap.Add(param.Name, temp);
 			}
 
@@ -26,9 +31,8 @@ namespace Hex.Arcanum.IR
 			string retval = LowerScope(fncHeader.FunctionScope);
 			if (retval == kMissingRetVal)
 			{
-				retval = NewTemp();
-				Emit(OpCode.LoadU64Const, retval, "0");
-				Emit(OpCode.Return, retval);
+				Emit(OpCode.LeaveFunc, String.Empty);
+				Emit(OpCode.Return, String.Empty);
 			}
 			return String.Empty;
 		}

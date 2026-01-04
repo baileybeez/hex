@@ -9,8 +9,14 @@ namespace Hex.Arcanum.IR
 		public string LowerReturn(Expression expr)
 		{
 			var ret = AssertValid<ReturnStatement>(expr);
-			var retVal = LowerExpression(ret.Expression);
-			Emit(OpCode.Return, String.Empty, retVal);
+			if (ret.Expression != null)
+			{
+				var retVal = LowerExpression(ret.Expression);
+				Emit(OpCode.CopyToReg, "RAX", retVal);
+			}
+
+			Emit(OpCode.LeaveFunc, String.Empty);
+			Emit(OpCode.Return, String.Empty);
 
 			return String.Empty;
 		}

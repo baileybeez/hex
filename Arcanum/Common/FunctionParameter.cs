@@ -13,6 +13,7 @@ namespace Hex.Arcanum.Common
 		public VariableTypes Type { get; private set; }
 		public VariableFlags Flag { get; private set; }
 		public StirDirection Stir { get; private set; }
+		public string Location { get; set; } = String.Empty;
 
 		public FunctionParam(string name, VariableTypes type, VariableFlags flag, StirDirection dir)
 		{

@@ -1,4 +1,5 @@
-﻿
+﻿using Hex.Arcanum.Exceptions;
+
 namespace Hex.Arcanum.Common
 {
 	public enum VariableTypes
@@ -34,6 +35,19 @@ namespace Hex.Arcanum.Common
 			Name = name;
 			Type = type;
 			Flag = flag;
+		}
+
+		public uint Size()
+		{
+			switch (Type)
+			{
+				default:	
+					throw new HexException($"Variable type '{Type}' doesn't have an entry for size information.");
+				case VariableTypes.Void:
+					return 0;
+				case VariableTypes.U64:
+					return 8;
+			}
 		}
 
 		public uint U64()

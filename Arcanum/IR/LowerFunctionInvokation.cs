@@ -17,14 +17,29 @@ namespace Hex.Arcanum.IR
 				string arg = LowerExpression(ip.Param);
 				argTempList.Add(arg);
 			}
-						
+
+			Emit(OpCode.SetupCall, String.Empty, argCount.ToString());
 			for (int idx = 0; idx < argCount; idx++)
-				Emit(OpCode.Param, String.Empty, argTempList[idx]);
+			{
+				if (idx < 6)
+					Emit(OpCode.CopyToReg, RegisterUtils.GetByArg(idx), argTempList[idx]);
+				else
+					Emit(OpCode.SaveToStack, RegisterUtils.GetOffset(idx).ToString(), argTempList[idx]);
+			}
 
 			string retTemp = NewTemp();
-			Emit(OpCode.Call, retTemp, $"func_{call.FunctionName}", argCount.ToString());
+			Emit(OpCode.Call, "RAX", $"func_{call.FunctionName}", argCount.ToString());
 			if (!String.IsNullOrEmpty(call.RetVar))
+			{
+				Emit(OpCode.CopyFromReg, retTemp, "RAX");
 				Emit(OpCode.Copy, call.RetVar, retTemp);
+			}
+
+			if (argCount > 6)
+			{
+				int stackSize = (argCount - 6) * 8;
+				Emit(OpCode.DeallocStack, String.Empty, stackSize.ToString());
+			}	
 
 			return retTemp;
 		}
