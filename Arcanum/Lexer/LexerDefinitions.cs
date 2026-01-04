@@ -81,7 +81,21 @@ namespace Hex.Arcanum.Lexer
 
 			{ RuneCodes.Salt, LexemeTypes.Salt },
 			{ RuneCodes.Ash, LexemeTypes.Ash },
-
 		};
+
+		public static bool IsIdentifier(string str)
+		{
+			var runeList = str.EnumerateRunes();
+			foreach (var rune in runeList)
+			{
+				if (!Lexer.IsRune(rune))
+					return false;
+			}
+
+			return true;
+		}
+
+		public static bool IsNumber(Rune rune) => _numberList.Contains(rune);
+		public static bool IsRune(Rune rune) => _runeList.Contains(rune);
 	}
 }

@@ -25,6 +25,11 @@ namespace Hex.Arcanum.Common
 			"RDI", "RSI", "RDX", "RCX", "R8", "R9"
 		};
 
+		public static bool IsReg(string name)
+		{
+			return _regMap.ContainsKey(name);
+		}
+
 		public static bool TryGet(string name, out Registers result)
 		{
 			return _regMap.TryGetValue(name, out result);

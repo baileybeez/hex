@@ -36,7 +36,13 @@ namespace Hex.Arcanum.IR
 				_instList.Add(new IRInst(OpCode.Exit, string.Empty, null, null));
 			}
 			LowerExpression(rootScope);
+			return _instList;
+		}
 
+		public List<IRInst> RunOnRitual(FunctionDeclaration fnc)
+		{
+			_instList.Clear();
+			LowerFunctionDeclaration(fnc);
 			return _instList;
 		}
 

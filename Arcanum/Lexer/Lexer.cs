@@ -125,9 +125,6 @@ namespace Hex.Arcanum.Lexer
 			_lexemeList.Add(new Lexeme(LexemeTypes.NewLine, kNewLine, ls.Line, len));
 		}
 
-		public bool IsNumber(Rune rune) => _numberList.Contains(rune);
-		public bool IsRune(Rune rune) => _runeList.Contains(rune);
-
 		public void AddLexeme(LexerState ls, LexemeTypes lexType)
 		{
 			_lexemeList.Add(new Lexeme(lexType, ls.Value(), ls.Line, ls.Col));
