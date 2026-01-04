@@ -14,7 +14,7 @@ namespace HexTests.ParserTests
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.FunctionName, Is.EqualTo("ᚠᛇᛒ"));
-			Assert.That(child.ReturnType, Is.EqualTo(VariableTypes.Void));
+			Assert.That(child.ReturnClass.Type, Is.EqualTo(VariableTypes.Void));
 			Assert.That(child.Parameters.Count, Is.EqualTo(1));
 			Assert.That(child.Parameters[0].Name, Is.EqualTo("ᚷᛖᚾ"));
 			Assert.That(child.Parameters[0].Type, Is.EqualTo(VariableTypes.U64));
@@ -45,7 +45,7 @@ namespace HexTests.ParserTests
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.FunctionName, Is.EqualTo("ᚫᛞᛞ"));
-			Assert.That(child.ReturnType, Is.EqualTo(VariableTypes.U64));
+			Assert.That(child.ReturnClass.Type, Is.EqualTo(VariableTypes.U64));
 			Assert.That(child.Parameters.Count, Is.EqualTo(2));
 			Assert.That(child.Parameters[0].Name, Is.EqualTo("ᚫ"));
 			Assert.That(child.Parameters[0].Type, Is.EqualTo(VariableTypes.U64));

@@ -16,19 +16,25 @@ namespace Hex.Arcanum.Emulator
 			Jump(inst);
 		}
 
-		public void EmulateParam(IRInst inst)
+		public void EmulateSetupCall(IRInst inst)
 		{
-			if (inst.leftOperand == null)
-				throw new HexException($"parameter information must be provided!");
-				
-			object val = GetValue(inst.leftOperand);
-			_callParams.Push(val);
+			// determine stackSize
+			int stackSize = 0;
+			if (Int32.TryParse(inst.leftOperand, out int count))
+				stackSize = RegisterUtils.GetStackSize(count);
+
+			// TODO: need to store this value somewhere?
+			AllocateStackSpace(stackSize);
 		}
 
-		public void EmulateCopyParam(IRInst inst)
-		{			
-			object val = _callParams.Pop();
-			SetValue(inst.result, val);
+		public void EmulateEnterFunc(IRInst inst)
+		{
+
+		}
+
+		public void EmulateLeaveFunc(IRInst inst)
+		{
+
 		}
 	}
 }

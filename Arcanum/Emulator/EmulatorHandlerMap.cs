@@ -32,10 +32,17 @@ namespace Hex.Arcanum.Emulator
 			_handlerMap[OpCode.JumpIfTrue] = JumpIfTrue;
 			_handlerMap[OpCode.Jump] = Jump;
 
-			_handlerMap[OpCode.Param] = EmulateParam;
-			_handlerMap[OpCode.CopyParam] = EmulateCopyParam;
 			_handlerMap[OpCode.Call] = EmulateCall;
 			_handlerMap[OpCode.Return] = EmulateReturn;
+
+			_handlerMap[OpCode.SetupCall] = EmulateSetupCall;
+			_handlerMap[OpCode.EnterFunc] = EmulateEnterFunc;
+			_handlerMap[OpCode.LeaveFunc] = EmulateLeaveFunc;
+
+			_handlerMap[OpCode.CopyToReg] = EmulateCopyToReg;
+			_handlerMap[OpCode.CopyFromReg] = EmulateCopyFromReg;
+			_handlerMap[OpCode.SaveToStack] = EmulateCopyToStack;
+			_handlerMap[OpCode.LoadFromStack] = EmulateCopyFromStack;
 
 			_handlerMap[OpCode.Exit] = EmulateExit;
 			_handlerMap[OpCode.Whisper] = EmulateWhisper;

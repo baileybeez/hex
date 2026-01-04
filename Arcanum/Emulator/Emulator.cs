@@ -8,7 +8,6 @@ namespace Hex.Arcanum.Emulator
 	{
 		private readonly List<IRInst> _instList = new();
 		private Dictionary<string, int> _labelMap = new();
-		private readonly Dictionary<string, object> _memory = new();
 		private IConsole? _console = null;
 		private int _ip = 0;
 

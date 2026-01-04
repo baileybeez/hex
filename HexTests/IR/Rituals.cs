@@ -9,72 +9,160 @@ namespace HexTests.IR
 		[Test]
 		public void Declaration()
 		{
+			var opList = new OpCode[] {
+				OpCode.Label, 
+				OpCode.EnterFunc, 
+				OpCode.CopyFromReg, 
+				OpCode.LeaveFunc, 
+				OpCode.Return 
+			};
 			var list = Lower(Constants.kRitualDeclaration);
 
-			Assert.That(list.Count, Is.EqualTo(4));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.CopyParam));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.LoadU64Const));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Return));
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
 		}
 
 		[Test]
 		public void Invokation()
 		{
+			var opList = new OpCode[] { 
+				OpCode.SetupCall, 
+				OpCode.CopyToReg, 
+				OpCode.Call 
+			};
 			var list = Lower(Constants.kRitualInvokation);
 
-			Assert.That(list.Count, Is.EqualTo(2));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Param));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Call));
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
 		}
 
 		[Test]
 		public void Decl_Add_a_b()
 		{
+			var opList = new OpCode[] {
+				OpCode.Label, 
+				OpCode.EnterFunc, 
+				OpCode.CopyFromReg, 
+				OpCode.CopyFromReg, 
+				OpCode.Add,
+				OpCode.CopyToReg,
+				OpCode.LeaveFunc, 
+				OpCode.Return
+			};
 			var list = Lower(Constants.kRitual_Add);
 
-			Assert.That(list.Count, Is.EqualTo(5));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.CopyParam));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.CopyParam));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Add));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Return));
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
 		}
 
 		[Test]
 		public void Decl_and_Call_Add_a_b()
 		{
+			var opList = new OpCode[] {
+				OpCode.Call,
+				OpCode.Exit,
+				OpCode.Label,
+				OpCode.EnterFunc,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.Add,
+				OpCode.CopyToReg,
+				OpCode.LeaveFunc,
+				OpCode.Return,
+				OpCode.Label,
+				OpCode.EnterFunc,
+				OpCode.LoadU64Const, 
+				OpCode.LoadU64Const, 
+				OpCode.SetupCall,
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.Call, 
+				OpCode.CopyFromReg, 
+				OpCode.Copy, 
+				OpCode.Whisper, 
+				OpCode.LeaveFunc, 
+				OpCode.Return
+			};
 			var list = Lower(Constants.kRitual_Add_Call);
 
-			Assert.That(list.Count, Is.EqualTo(17));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Call));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Exit));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.CopyParam));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.CopyParam));
-			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Add));
-			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Return));
-			Assert.That(list[7].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[8].opCode, Is.EqualTo(OpCode.LoadU64Const));
-			Assert.That(list[9].opCode, Is.EqualTo(OpCode.LoadU64Const));
-			Assert.That(list[10].opCode, Is.EqualTo(OpCode.Param));
-			Assert.That(list[11].opCode, Is.EqualTo(OpCode.Param));
-			Assert.That(list[12].opCode, Is.EqualTo(OpCode.Call));
-			Assert.That(list[13].opCode, Is.EqualTo(OpCode.Copy));
-			Assert.That(list[14].opCode, Is.EqualTo(OpCode.Whisper));
-			Assert.That(list[15].opCode, Is.EqualTo(OpCode.LoadU64Const));
-			Assert.That(list[16].opCode, Is.EqualTo(OpCode.Return));
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
 		}
 
 		[Test]
 		public void InvokeIntoVariable()
 		{
+			var opList = new OpCode[] {
+				OpCode.SetupCall,
+				OpCode.CopyToReg,
+				OpCode.Call, 
+				OpCode.CopyFromReg,
+				OpCode.Copy
+			};
 			var list = Lower(Constants.kRitualInvokationIntoVar);
 
-			Assert.That(list.Count, Is.EqualTo(3));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Param));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Call));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Copy));
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
+		}
+
+		[Test]
+		public void LargeArgCountFuncCall()
+		{
+			var opList = new OpCode[] {
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.LoadU64Const,
+				OpCode.SetupCall,
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.CopyToReg, 
+				OpCode.SaveToStack, 
+				OpCode.SaveToStack,
+				OpCode.Call, 
+				OpCode.DeallocStack
+			};
+			var list = Lower(Constants.kRitualInvokationLargeArgCount);
+
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
+		}
+
+		[Test]
+		public void LargeArgsDeclare()
+		{
+			var opList = new OpCode[] {
+				OpCode.Label,
+				OpCode.EnterFunc, 
+				OpCode.LoadFromStack,
+				OpCode.LoadFromStack,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.CopyFromReg,
+				OpCode.LeaveFunc, 
+				OpCode.Return
+			};
+			var list = Lower(Constants.kRitualDeclarationLargeArgCount);
+
+			Assert.That(list.Count, Is.EqualTo(opList.Length));
+			for (int idx = 0; idx < opList.Length; idx++)
+				Assert.That(list[idx].opCode, Is.EqualTo(opList[idx]));
 		}
 	}
 }

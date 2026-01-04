@@ -8,11 +8,11 @@ namespace HexTests.Emulation
 		{
 			Emulate(Constants.kRitual_Add_Call);
 
-			Assert.That(_emu.MemCount(), Is.EqualTo(8));
+			Assert.That(_emu.MemCount(), Is.EqualTo(7));
 			Assert.That(U64Val("t0"), Is.EqualTo(3));
 			Assert.That(U64Val("t1"), Is.EqualTo(2));
 			Assert.That(U64Val("t5"), Is.EqualTo(5));
-			Assert.That(U64Val("t6"), Is.EqualTo(0));
+			Assert.That(U64Val("ᚫ"), Is.EqualTo(5));
 		}
 
 		[Test]
@@ -21,8 +21,10 @@ namespace HexTests.Emulation
 			const UInt64 ans = 9;
 			Emulate(Constants.kRitual_NestedCalls);
 
-			Assert.That(_emu.MemCount(), Is.EqualTo(10));
-			Assert.That(U64Val("t6"), Is.EqualTo(ans));
+			Assert.That(_emu.MemCount(), Is.EqualTo(8));
+			Assert.That(_emu.GetRegister("RDI"), Is.EqualTo(4));
+			Assert.That(_emu.GetRegister("RAX"), Is.EqualTo(ans));
+			Assert.That(U64Val("t3"), Is.EqualTo(ans));
 		}
 	}
 }

@@ -53,11 +53,20 @@ namespace Hex.Arcanum.Common
 		AllocStack = 72,
 		DeallocStack = 73,
 
+		// Registers
+		CopyToReg = 80,
+		CopyFromReg = 81,
+		SaveToStack = 82,
+		LoadFromStack = 83,
+
 		// functions
 		Call = 90,
 		Return = 91,
 		Param = 92,
 		CopyParam = 93,
+		EnterFunc = 94,
+		LeaveFunc = 95,
+		SetupCall = 96,
 	}
 
 	// 3AC approach
