@@ -39,7 +39,11 @@ namespace HexTests
 		public const string kConsoleOutput = "⯝ \"hello world\"";
 		public const string kStringWithCRLF = "⯝ \"1\n\"";
 
-		public const string kFiboProgram = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 1\r\n   🝣 🜂 🜔 ᚲ \r\n\r\n   🝣 🜂 🜔 ᚲᛸᚲᛚᛖ ← ᚷᛖᚾ\r\n   \r\n   ⯝ \"1\n\"\r\n   ⟥ ↻ ᚲᛸᚲᛚᛖ > 0 \r\n      ᚲ ← ᛒ + ᚫ\r\n      ᚫ ← ᛒ\r\n      ᛒ ← ᚲ\r\n\r\n      ⯝ ᚫ\r\n      ⯝ \"\n\"\r\n      ⇓ ᚲᛸᚲᛚᛖ\r\n   ⟤\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚷᛖᚾ ← 10\r\n\r\n   🝣 🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ\r\n⟤\r\n ";
+		public static readonly ProgramListings Programs = new();
+	}
 
+	public sealed class ProgramListings
+	{
+		public readonly string kFibonacci = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 1\r\n   🝣 🜂 🜔 ᚲ \r\n\r\n   🝣 🜂 🜔 ᚲᛸᚲᛚᛖ ← ᚷᛖᚾ\r\n   \r\n   ⯝ \"1\n\"\r\n   ⟥ ↻ ᚲᛸᚲᛚᛖ > 0 \r\n      ᚲ ← ᛒ + ᚫ\r\n      ᚫ ← ᛒ\r\n      ᛒ ← ᚲ\r\n\r\n      ⯝ ᚫ\r\n      ⯝ \"\n\"\r\n      ⇓ ᚲᛸᚲᛚᛖ\r\n   ⟤\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚷᛖᚾ ← 10\r\n\r\n   🝣 🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ\r\n⟤\r\n ";
 	}
 }

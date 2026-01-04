@@ -9,10 +9,14 @@ namespace Hex.Arcanum.Emulator
 			if (_console == null || inst.leftOperand == null)
 				return;
 
-			if (TryGetValue(inst.leftOperand, out object val))
-				_console.Write(val.ToString());
-			else
-				_console.Write(inst.leftOperand);
+			string? text = null;
+			if (!TryGetValue(inst.leftOperand, out object val))
+				text = inst.leftOperand;
+			else if (val != null)
+				text = val.ToString();
+
+			if (text != null)
+				_console.Write(text);
 		}
 	}
 }

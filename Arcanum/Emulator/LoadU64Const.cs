@@ -11,7 +11,7 @@ namespace Hex.Arcanum.Emulator
 				return;
 
 			if (UInt64.TryParse(inst.leftOperand, out UInt64 val))
-				_memory[inst.result] = val;
+				SetValue(inst.result, val);
 		}
 	}
 }

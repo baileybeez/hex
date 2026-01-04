@@ -7,18 +7,41 @@ namespace Hex.Arcanum.Emulator
 	{
 		private readonly Dictionary<string, object> _memory = new();
 
+		public int GetUsedMemoryCount()
+		{
+			return _memory.Count; 
+		}
+
 		public void SetValue(string key, object val)
 		{
-			_memory[key] = val;
+			if (RegisterUtils.IsReg(key))
+				SetRegister(key, Convert.ToUInt64(val));
+			else 
+				_memory[key] = val;
 		}
 
 		public bool TryGetValue(string key, out object val)
 		{
-			return _memory.TryGetValue(key, out val);
+			val = 0;
+			if (RegisterUtils.IsReg(key))
+			{
+				val = GetRegister(key);
+				return true;
+			}
+			if (_memory.ContainsKey(key))
+			{
+				val = _memory[key];
+				return true;
+			}
+			 
+			return false;
 		}
 
 		public object GetValue(string key)
 		{
+			if (RegisterUtils.IsReg(key))
+				return GetRegister(key);
+
 			if (!_memory.ContainsKey(key))
 				throw new HexException($"Variable '{key}' is not defined!");
 
