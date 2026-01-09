@@ -61,6 +61,8 @@ namespace Hex.Arcanum.Lexer
 			{ RuneCodes.SquareLeftTick, LexemeTypes.CloseScope },
 			{ RuneCodes.SquareRightTick, LexemeTypes.OpenScope },
 			{ RuneCodes.WaveArrowRight, LexemeTypes.If },
+			{ RuneCodes.DotDiamond, LexemeTypes.ElseIf },
+			{ RuneCodes.ConcaveDiamond, LexemeTypes.Else },
 			{ RuneCodes.CWFullArrow, LexemeTypes.While },
 			{ RuneCodes.RightLeftArrows, LexemeTypes.Weave },
 			{ RuneCodes.DoubleArrowRight, LexemeTypes.To },

@@ -12,9 +12,10 @@ namespace Hex.Arcanum.Expressions
       Subtraction = 2,
       Multiplication = 3,
       Division = 4,
+		Modulus = 5,
 
-      // Logic
-      Equality = 10,
+		// Logic
+		Equality = 10,
       Inequality = 11,
       GreaterThan = 12,
       GreaterThanEquals = 13,
@@ -46,6 +47,7 @@ namespace Hex.Arcanum.Expressions
 				LexemeTypes.Minus => BinaryOperatorTypes.Subtraction,
 				LexemeTypes.Times => BinaryOperatorTypes.Multiplication,
 				LexemeTypes.Slash => BinaryOperatorTypes.Division,
+				LexemeTypes.Percent => BinaryOperatorTypes.Modulus,
 				LexemeTypes.Equality => BinaryOperatorTypes.Equality,
 				LexemeTypes.Inequality => BinaryOperatorTypes.Inequality,
 				LexemeTypes.GreaterThan => BinaryOperatorTypes.GreaterThan,

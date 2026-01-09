@@ -39,7 +39,12 @@ namespace HexTests.Programs
 			TestConsole con = new();
 			Emulate(Constants.Programs.kFizzBuzz, con);
 
-			Assert.That(con.Logs.Count, Is.EqualTo(0));
+			Assert.That(con.Logs.Count, Is.EqualTo(50));
+			Assert.That(con.Logs[1], Is.EqualTo("2"));
+			Assert.That(con.Logs[2], Is.EqualTo("fizz"));
+			Assert.That(con.Logs[4], Is.EqualTo("buzz"));
+			Assert.That(con.Logs[10], Is.EqualTo("11"));
+			Assert.That(con.Logs[14], Is.EqualTo("fizzbuzz"));
 		}
 
 		[Test]

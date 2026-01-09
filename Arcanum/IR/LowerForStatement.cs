@@ -15,16 +15,16 @@ namespace Hex.Arcanum.IR
 
 			string itr = NewTemp();
 			string truth = NewTemp();
-			string swap = NewTemp();
+			string swap = frs.VarName.Name;
 			string end = LowerExpression(frs.To);
 
 			Emit(OpCode.Copy, itr, LowerExpression(frs.From));
 			Emit(OpCode.Label, startLabel);
-			Emit(OpCode.GreaterEqual, truth, itr, end);
+			Emit(OpCode.Greater, truth, itr, end);
 			Emit(OpCode.JumpIfTrue, truth, termLabel);
+			LowerScope(frs.InnerScope);
 			Emit(OpCode.Inc, swap, itr);
 			Emit(OpCode.Copy, itr, swap);
-			LowerScope(frs.InnerScope);
 			Emit(OpCode.Jump, String.Empty, startLabel);
 			Emit(OpCode.Label, termLabel);
 

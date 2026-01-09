@@ -9,8 +9,9 @@ namespace Hex.Arcanum.IR
 		public string LowerWhisper(Expression expr)
 		{
 			var whisper = AssertValid<Whisper>(expr);
+			var textVal = LowerExpression(whisper.TextExpression);
 
-			Emit(OpCode.Whisper, String.Empty, whisper.Text);
+			Emit(OpCode.Whisper, String.Empty, textVal);
 
 			return String.Empty;
 		}

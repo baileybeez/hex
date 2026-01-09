@@ -19,6 +19,7 @@ namespace Hex.Arcanum.IR
 				BinaryOperatorTypes.Subtraction => OpCode.Sub,
 				BinaryOperatorTypes.Multiplication => OpCode.Mul,
 				BinaryOperatorTypes.Division => OpCode.Div,
+				BinaryOperatorTypes.Modulus => OpCode.Mod,
 				BinaryOperatorTypes.Equality => OpCode.Equal,
 				BinaryOperatorTypes.Inequality => OpCode.NotEqual,
 				BinaryOperatorTypes.GreaterThan => OpCode.Greater,

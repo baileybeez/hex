@@ -54,6 +54,8 @@ namespace Hex.Arcanum.Common
 		If = 54,
 		Weave = 55,
 		To = 56,
+		Else = 57,
+		ElseIf = 58,
 
 		Place = 60,
 		Invoke = 61,

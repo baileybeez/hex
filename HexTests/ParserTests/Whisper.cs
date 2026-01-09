@@ -13,7 +13,11 @@ namespace HexTests.ParserTests
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.Whisper));
-			Assert.That(child.Text, Is.EqualTo("hello world"));
+			Assert.That(child.TextExpression.Type, Is.EqualTo(ExpressionTypes.StringLiteral));
+
+			var exprLit = child.TextExpression as StringLiteral;
+			Assert.That(exprLit, Is.Not.Null);
+			Assert.That(exprLit.Value, Is.EqualTo("hello world"));
 		}
 	}
 }
