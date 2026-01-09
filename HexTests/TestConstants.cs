@@ -44,6 +44,8 @@ namespace HexTests
 
 	public sealed class ProgramListings
 	{
+		public readonly string kSimpleAdd = "⚝ ᚠᛟᛟ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n   🝀 🜃 🜔 ᛒ ↷\r\n◯⟥\r\n   🝑 ᚫ + ᛒ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 2\r\n\r\n   🝣 🜂 🜔 ᛇ\r\n\r\n   🝣 🝥\r\n   🝀 ᚫ 🝥 ↷\r\n   🝀 ᛒ 🝥 ↷\r\n   🝠 ᚠᛟᛟ ⇒ ᛇ\r\n⟤ ";
+
 		public readonly string kFibonacci = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 1\r\n   🝣 🜂 🜔 ᚲ \r\n\r\n   🝣 🜂 🜔 ᚲᛸᚲᛚᛖ ← ᚷᛖᚾ\r\n   \r\n   ⯝ \"1\n\"\r\n   ⟥ ↻ ᚲᛸᚲᛚᛖ > 0 \r\n      ᚲ ← ᛒ + ᚫ\r\n      ᚫ ← ᛒ\r\n      ᛒ ← ᚲ\r\n\r\n      ⯝ ᚫ\r\n      ⯝ \"\n\"\r\n      ⇓ ᚲᛸᚲᛚᛖ\r\n   ⟤\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚷᛖᚾ ← 10\r\n\r\n   🝣 🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ\r\n⟤\r\n ";
 	}
 }

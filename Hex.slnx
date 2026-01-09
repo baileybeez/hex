@@ -1,5 +1,7 @@
 <Solution>
   <Folder Name="/Examples/">
+    <File Path="add_call.codex" />
+    <File Path="examples/simple_add.codex" />
     <File Path="fibonacci.hex" />
   </Folder>
   <Project Path="Arcanum/Arcanum.csproj" />

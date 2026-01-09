@@ -6,7 +6,6 @@ namespace Hex.Arcanum.IR
 {
 	public sealed partial class IRLowerer
 	{
-		// NOTE: RBX, RSP, RBP, and R12–R15 callee saved
 		public string LowerFunctionDeclaration(Expression expr)
 		{
 			var fncHeader = AssertValid<FunctionDeclaration>(expr);
