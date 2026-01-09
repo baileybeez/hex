@@ -30,5 +30,25 @@ namespace HexTests.Emulation
 			Assert.That(_emu.GetValue("t1"), Is.EqualTo(2));
 			Assert.That(_emu.GetValue("t2"), Is.EqualTo(true));
 		}
+
+		[Test] 
+		public void LogicalAnd()
+		{
+			Emulate(Constants.kAndEqualityScript);
+
+			Assert.That(_emu.GetValue("t2"), Is.EqualTo(true));
+			Assert.That(_emu.GetValue("t5"), Is.EqualTo(true));
+			Assert.That(_emu.GetValue("t6"), Is.EqualTo(true));
+		}
+
+		[Test]
+		public void LogicalOr()
+		{
+			Emulate(Constants.kOrEqualityScript);
+
+			Assert.That(_emu.GetValue("t2"), Is.EqualTo(false));
+			Assert.That(_emu.GetValue("t5"), Is.EqualTo(true));
+			Assert.That(_emu.GetValue("t6"), Is.EqualTo(true));
+		}
 	}
 }

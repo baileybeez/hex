@@ -53,6 +53,8 @@ namespace Hex.Arcanum.Lexer
 			{ RuneCodes.GreaterThanEquals, LexemeTypes.GreaterThanEquals },
 			{ RuneCodes.LessThan, LexemeTypes.LessThan },
 			{ RuneCodes.LessThanEquals, LexemeTypes.LessThanEquals },
+			{ RuneCodes.CurlyLogicalAnd, LexemeTypes.LogicalAnd },
+			{ RuneCodes.CurlyLogicalOr, LexemeTypes.LogicalOr },
 
 			{ RuneCodes.Pentacle, LexemeTypes.Ritual },
 			{ RuneCodes.LargeCircle, LexemeTypes.Circle },

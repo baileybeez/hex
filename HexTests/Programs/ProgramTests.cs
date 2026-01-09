@@ -13,8 +13,7 @@ namespace HexTests.Programs
 		[Test]
 		public void SimpleAdd()
 		{
-			TestConsole con = new TestConsole();
-
+			TestConsole con = new();
 			Emulate(Constants.kRitual_Add_Call, con);
 
 			Assert.That(con.Logs.Count, Is.EqualTo(1));
@@ -24,7 +23,7 @@ namespace HexTests.Programs
 		[Test]
 		public void Fibonacci()
 		{
-			TestConsole con = new TestConsole();
+			TestConsole con = new();
 			Emulate(Constants.Programs.kFibonacci, con);
 
 			Assert.That(con.Logs.Count, Is.EqualTo(11));
@@ -32,6 +31,15 @@ namespace HexTests.Programs
 			Assert.That(con.Logs[4], Is.EqualTo("5"));
 			Assert.That(con.Logs[7], Is.EqualTo("21"));
 			Assert.That(con.Logs[10], Is.EqualTo("89"));
+		}
+
+		[Test]
+		public void FizzBuzz()
+		{
+			TestConsole con = new();
+			Emulate(Constants.Programs.kFizzBuzz, con);
+
+			Assert.That(con.Logs.Count, Is.EqualTo(0));
 		}
 
 		[Test]

@@ -1,5 +1,6 @@
 ﻿
 using Hex.Arcanum.Common;
+using Hex.Arcanum.Expressions;
 using Hex.Arcanum.IR;
 
 namespace HexTests.IR
@@ -71,6 +72,38 @@ namespace HexTests.IR
 			var list = _lower.Run(scope);
 
 			LogicValidation(list, OpCode.LessEqual);
+		}
+
+		[Test]
+		public void AndEquality()
+		{
+			var scope = Parse(Constants.kAndEqualityScript);
+			var list = _lower.Run(scope);
+
+			Assert.That(list.Count, Is.EqualTo(7));
+			Assert.That(list[0].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[1].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Equal));
+			Assert.That(list[3].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Equal));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.And));
+		}
+
+		[Test]
+		public void OrEquality()
+		{
+			var scope = Parse(Constants.kOrEqualityScript);
+			var list = _lower.Run(scope);
+
+			Assert.That(list.Count, Is.EqualTo(7));
+			Assert.That(list[0].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[1].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Equal));
+			Assert.That(list[3].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.LoadU64Const));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Equal));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Or));
 		}
 	}
 }

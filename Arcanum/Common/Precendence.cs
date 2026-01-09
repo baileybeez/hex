@@ -27,8 +27,8 @@ namespace Hex.Arcanum.Common
 			{ LexemeTypes.GreaterThanEquals, 3 },
 			{ LexemeTypes.LessThan, 3 },
 			{ LexemeTypes.LessThanEquals, 3 },
-         // && ... 2
-         // || ... 1
+			{ LexemeTypes.LogicalAnd, 2 },
+			{ LexemeTypes.LogicalOr, 1 },
       };
 
 		public static int GetUnary(LexemeTypes type)

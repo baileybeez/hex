@@ -25,6 +25,8 @@ namespace Hex.Arcanum.IR
 				BinaryOperatorTypes.GreaterThanEquals => OpCode.GreaterEqual,
 				BinaryOperatorTypes.LessThan => OpCode.Less,
 				BinaryOperatorTypes.LessThanEquals => OpCode.LessEqual,
+				BinaryOperatorTypes.And => OpCode.And,
+				BinaryOperatorTypes.Or => OpCode.Or,
 				_ => throw new NotImplementedException($"Operator {binOp.Operator} not implemented.")
 			};
 
