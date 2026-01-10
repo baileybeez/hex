@@ -28,7 +28,7 @@ namespace Hex.Arcanum.Emulator
 				val = GetRegister(key);
 				return true;
 			}
-			if (_memory.ContainsKey(key))
+			else if (_memory.ContainsKey(key))
 			{
 				val = _memory[key];
 				return true;

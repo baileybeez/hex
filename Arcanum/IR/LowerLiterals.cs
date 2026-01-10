@@ -14,5 +14,12 @@ namespace Hex.Arcanum.IR
 			Emit(OpCode.LoadU64Const, temp, lit.Value.ToString());
 			return temp;
 		}
+
+		public string LowerStringLiteral(Expression expr)
+		{
+			var lit = AssertValid<StringLiteral>(expr);
+			// TODO: push this into resources and emit an address instead
+			return lit.Value;
+		}
 	}
 }

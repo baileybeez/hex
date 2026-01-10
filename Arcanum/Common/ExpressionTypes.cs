@@ -15,11 +15,13 @@ namespace Hex.Arcanum.Common
 
 		NumberLiteral = 10,
 		BooleanLiteral = 11,
+		StringLiteral = 12,
 
 		VariableConjuration = 20,
 		IfStatement = 21,
 		WhileStatement = 22,
 		ForStatement = 23,
+		DefaultCondition = 24,
 
 		FunctionDeclaration = 24,
 		FunctionInvokation = 25,

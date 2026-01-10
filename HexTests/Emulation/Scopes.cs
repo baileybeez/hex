@@ -12,7 +12,7 @@ namespace HexTests.Emulation
 			var itor = _emu.GetValue("t0");
 
 			Assert.That(condition, Is.EqualTo(true));
-			Assert.That(itor, Is.EqualTo(10));
+			Assert.That(itor, Is.EqualTo(11));
 		}
 	}
 }

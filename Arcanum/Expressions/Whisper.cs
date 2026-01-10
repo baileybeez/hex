@@ -4,12 +4,12 @@ namespace Hex.Arcanum.Expressions
 {
 	public sealed class Whisper : Expression
 	{
-		public string Text { get; private set; }
+		public Expression TextExpression { get; private set; }
 
-		public Whisper(string str) 
+		public Whisper(Expression expr) 
 			: base(ExpressionTypes.Whisper)
 		{
-			Text = str; 
+			TextExpression = expr; 
 		}
 	}
 }

@@ -33,6 +33,8 @@ namespace Hex.Arcanum.IR
 				Emit(OpCode.LeaveFunc, String.Empty);
 				Emit(OpCode.Return, String.Empty);
 			}
+
+			_paramMap.Clear();
 			return String.Empty;
 		}
 	}

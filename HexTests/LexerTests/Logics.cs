@@ -81,5 +81,27 @@ namespace HexTests.LexerTests
 			Assert.That(lexList[2].Type, Is.EqualTo(LexemeTypes.Number));
 			Assert.That(lexList[3].Type, Is.EqualTo(LexemeTypes.NewLine));
 		}
+
+		[Test]
+		public void LogicalAnd()
+		{
+			List<Lexeme> lexList = _lexer.Run($"1 ⋏ 2");
+			Assert.That(lexList.Count, Is.EqualTo(4));
+			Assert.That(lexList[0].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(lexList[1].Type, Is.EqualTo(LexemeTypes.LogicalAnd));
+			Assert.That(lexList[2].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(lexList[3].Type, Is.EqualTo(LexemeTypes.NewLine));
+		}
+
+		[Test]
+		public void LogicalOr()
+		{
+			List<Lexeme> lexList = _lexer.Run($"1 ⋎ 2");
+			Assert.That(lexList.Count, Is.EqualTo(4));
+			Assert.That(lexList[0].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(lexList[1].Type, Is.EqualTo(LexemeTypes.LogicalOr));
+			Assert.That(lexList[2].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(lexList[3].Type, Is.EqualTo(LexemeTypes.NewLine));
+		}
 	}
 }

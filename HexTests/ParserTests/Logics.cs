@@ -18,6 +18,38 @@ namespace HexTests.ParserTests
 		}
 
 		[Test]
+		public void AndEquality()
+		{
+			var ret = Parse(Constants.kAndEqualityScript);
+			var child = ret.Children.First();
+
+			Assert.That(child, Is.Not.Null);
+			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+
+			var binExpr = child as BinaryOperation;
+			Assert.That(binExpr, Is.Not.Null);
+			Assert.That(binExpr.Operator, Is.EqualTo(BinaryOperatorTypes.And));
+			Assert.That(binExpr.Left.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+			Assert.That(binExpr.Right.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+		}
+
+		[Test]
+		public void OrEquality()
+		{
+			var ret = Parse(Constants.kOrEqualityScript);
+			var child = ret.Children.First();
+
+			Assert.That(child, Is.Not.Null);
+			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+
+			var binExpr = child as BinaryOperation;
+			Assert.That(binExpr, Is.Not.Null);
+			Assert.That(binExpr.Operator, Is.EqualTo(BinaryOperatorTypes.Or));
+			Assert.That(binExpr.Left.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+			Assert.That(binExpr.Right.Type, Is.EqualTo(ExpressionTypes.BinaryOp));
+		}
+
+		[Test]
 		public void Invert()
 		{
 			var ret = Parse(Constants.kBangScript);

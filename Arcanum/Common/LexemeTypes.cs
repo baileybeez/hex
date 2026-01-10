@@ -35,6 +35,8 @@ namespace Hex.Arcanum.Common
 		LessThan = 25,
 		GreaterThanEquals = 26,
 		LessThanEquals = 27,
+		LogicalAnd = 28,
+		LogicalOr = 29,
 
 		// arcane 
 		Ritual = 40,
@@ -52,6 +54,8 @@ namespace Hex.Arcanum.Common
 		If = 54,
 		Weave = 55,
 		To = 56,
+		Else = 57,
+		ElseIf = 58,
 
 		Place = 60,
 		Invoke = 61,

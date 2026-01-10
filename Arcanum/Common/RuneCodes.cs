@@ -12,10 +12,14 @@ namespace Hex.Arcanum.Common
 		public static readonly int Minus = 0x002D; // -
 		public static readonly int Slash = 0x002F; // /
 
+		public static readonly int ZigZagBolt = 0x21AF; // ↯
+
 		public static readonly int Truth = 0x22A4; // T
 		public static readonly int False = 0x22A5; // ⊥
 		public static readonly int Exists = 0x2203; // ∃
 		public static readonly int NotExists = 0x2204; // ∄
+		public static readonly int CurlyLogicalOr = 0x22CE; // ⋎
+		public static readonly int CurlyLogicalAnd = 0x22CF; // ⋏
 		public static readonly int GreaterThan = 0x003E; // >
 		public static readonly int LessThan = 0x003C; // <
 		public static readonly int GreaterThanEquals = 0x2265; // ≥
@@ -31,6 +35,8 @@ namespace Hex.Arcanum.Common
 		public static readonly int DoubleDownArrow = 0x21D3; // ⇓
 		public static readonly int SolidFourPoint = 0x2726; // ✦
 		public static readonly int OpenFourPoint = 0x2727; // ✧ 
+		public static readonly int DotDiamond = 0x27D0; // ⟐
+		public static readonly int ConcaveDiamond = 0x27E1; // ⟡
 		public static readonly int CCWSemiArrow = 0x21B6; // ↶
 		public static readonly int CWSemiArrow = 0x21B7; // ↷
 		public static readonly int CCWFullArrow = 0x21BA; // ↺

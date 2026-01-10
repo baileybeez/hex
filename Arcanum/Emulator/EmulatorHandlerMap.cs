@@ -17,6 +17,7 @@ namespace Hex.Arcanum.Emulator
 			_handlerMap[OpCode.Sub] = ArithmeticOp;
 			_handlerMap[OpCode.Mul] = ArithmeticOp;
 			_handlerMap[OpCode.Div] = ArithmeticOp;
+			_handlerMap[OpCode.Mod] = ArithmeticOp;
 			_handlerMap[OpCode.Inc] = Amplify;
 			_handlerMap[OpCode.Dec] = Diminish;
 
@@ -26,6 +27,8 @@ namespace Hex.Arcanum.Emulator
 			_handlerMap[OpCode.GreaterEqual] = LogicOp;
 			_handlerMap[OpCode.Less] = LogicOp;
 			_handlerMap[OpCode.LessEqual] = LogicOp;
+			_handlerMap[OpCode.And] = LogicOp;
+			_handlerMap[OpCode.Or] = LogicOp;
 
 			_handlerMap[OpCode.Label] = LabelOp;
 			_handlerMap[OpCode.JumpIfFalse] = JumpIfFalse;

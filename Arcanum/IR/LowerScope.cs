@@ -25,7 +25,6 @@ namespace Hex.Arcanum.IR
 					retval = kMissingRetVal;
 			}
 
-			_paramMap.Clear();
 			return retval;
 		}
 	}

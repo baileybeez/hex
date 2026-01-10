@@ -24,6 +24,8 @@ namespace Hex.Arcanum.Parser
 				Expression? expr = ParseExpression();
 				if (expr != null)
 					innerScope.AddExpression(expr);
+
+				SkipIf(LexemeTypes.NewLine);
 			}
 			Require(LexemeTypes.CloseScope);
 

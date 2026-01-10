@@ -8,22 +8,28 @@ namespace Hex.Arcanum.Parser
 	{
 		public Expression? ParseWhisper()
 		{
-			string text = "";
+			Expression? exprVal = null;
 
 			Require(LexemeTypes.Whisper);
 			Lexeme phrase = NextLexeme();
 			switch (phrase.Type)
 			{
-				default:
-					throw new UnexpectedLexemeException(phrase, $"Expected proper whisper phrase");
+				default: 
+					break;
 				
 				case LexemeTypes.String:
+					exprVal = new StringLiteral(phrase.Text);
+					break;
+
 				case LexemeTypes.Identifier:
-					text = phrase.Text;
+					exprVal = new NamedStatement(phrase.Text);
 					break;
 			}
 
-			return new Whisper(text);
+			if (exprVal == null)
+				throw new UnexpectedLexemeException(phrase, $"Expected proper whisper phrase");
+
+			return new Whisper(exprVal);
 		}
 	}
 }

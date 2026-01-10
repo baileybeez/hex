@@ -12,14 +12,17 @@ namespace Hex.Arcanum.Expressions
       Subtraction = 2,
       Multiplication = 3,
       Division = 4,
+		Modulus = 5,
 
-      // Logic
-      Equality = 10,
+		// Logic
+		Equality = 10,
       Inequality = 11,
       GreaterThan = 12,
       GreaterThanEquals = 13,
 		LessThan = 14,
 		LessThanEquals = 15,
+		And = 16,
+		Or = 17,
 	}
 
 	public sealed class BinaryOperation : Expression
@@ -38,20 +41,23 @@ namespace Hex.Arcanum.Expressions
 
       public BinaryOperatorTypes DetermineOperand(LexemeTypes type)
       {
-         return type switch
-         {
-            LexemeTypes.Plus => BinaryOperatorTypes.Addition,
-            LexemeTypes.Minus => BinaryOperatorTypes.Subtraction,
-            LexemeTypes.Times => BinaryOperatorTypes.Multiplication,
-            LexemeTypes.Slash => BinaryOperatorTypes.Division,
-            LexemeTypes.Equality => BinaryOperatorTypes.Equality,
-            LexemeTypes.Inequality => BinaryOperatorTypes.Inequality,
-            LexemeTypes.GreaterThan => BinaryOperatorTypes.GreaterThan,
-            LexemeTypes.GreaterThanEquals => BinaryOperatorTypes.GreaterThanEquals,
-            LexemeTypes.LessThan => BinaryOperatorTypes.LessThan,
-            LexemeTypes.LessThanEquals => BinaryOperatorTypes.LessThanEquals,
+			return type switch
+			{
+				LexemeTypes.Plus => BinaryOperatorTypes.Addition,
+				LexemeTypes.Minus => BinaryOperatorTypes.Subtraction,
+				LexemeTypes.Times => BinaryOperatorTypes.Multiplication,
+				LexemeTypes.Slash => BinaryOperatorTypes.Division,
+				LexemeTypes.Percent => BinaryOperatorTypes.Modulus,
+				LexemeTypes.Equality => BinaryOperatorTypes.Equality,
+				LexemeTypes.Inequality => BinaryOperatorTypes.Inequality,
+				LexemeTypes.GreaterThan => BinaryOperatorTypes.GreaterThan,
+				LexemeTypes.GreaterThanEquals => BinaryOperatorTypes.GreaterThanEquals,
+				LexemeTypes.LessThan => BinaryOperatorTypes.LessThan,
+				LexemeTypes.LessThanEquals => BinaryOperatorTypes.LessThanEquals,
+				LexemeTypes.LogicalAnd => BinaryOperatorTypes.And,
+				LexemeTypes.LogicalOr => BinaryOperatorTypes.Or,
 				_ => throw new HexException($"Unhandled binary operator '{type}'")
-         };
+			};
       }
    }
 }
