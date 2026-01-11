@@ -5,8 +5,8 @@ namespace Hex.Arcanum.Allocator
 {
 	public sealed partial class RegisterAllocator
 	{
-		private Dictionary<string, LiveRange> _rangeMap = new();
-
+		private readonly Dictionary<string, LiveRange> _rangeMap = new();
+		
 		public List<LiveRange> ComputeLiveRanges(List<IRInst> irList)
 		{
 			_rangeMap.Clear();
@@ -14,7 +14,15 @@ namespace Hex.Arcanum.Allocator
 			{
 				var inst = irList[idx];
 				if (ShouldProcess(inst))
+				{
 					UpdateRangeMap(inst.result, idx);
+				}
+				else if (inst.opCode == OpCode.Jump)
+				{
+					int idxDest = irList.FindIndex(a => a.opCode == OpCode.Label && a.result == inst.leftOperand);
+					if (idxDest != -1 && idxDest < idx)
+						UpdateAllInJumpRange(idxDest, idx);
+				}
 
 				foreach (var operand in GetValidOperands(inst))
 				{
@@ -24,6 +32,13 @@ namespace Hex.Arcanum.Allocator
 			}
 
 			return _rangeMap.Values.ToList();
+		}
+
+		public void UpdateAllInJumpRange(int idxStart, int idxEnd)
+		{
+			var subset = _rangeMap.Values.Where(lr => lr.StartIdx >= idxStart || (lr.EndIdx > idxStart && lr.EndIdx <= idxEnd));
+			foreach (var liveRange in subset)
+				liveRange.UpdateEndIndex(idxEnd);
 		}
 
 		public void UpdateRangeMap(string entry, int idx)

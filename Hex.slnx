@@ -1,8 +1,10 @@
 <Solution>
   <Folder Name="/Examples/">
-    <File Path="add_call.codex" />
+    <File Path="examples/add_call.codex" />
+    <File Path="examples/factorial.codex" />
+    <File Path="examples/fibonacci.codex" />
+    <File Path="examples/fizzbuzz.codex" />
     <File Path="examples/simple_add.codex" />
-    <File Path="fibonacci.hex" />
   </Folder>
   <Project Path="Arcanum/Arcanum.csproj" />
   <Project Path="Hex/Hex.csproj" />

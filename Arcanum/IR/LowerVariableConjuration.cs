@@ -10,11 +10,13 @@ namespace Hex.Arcanum.IR
 		{
 			var conj = AssertValid<VariableConjuration>(expr);
 
+			string temp = NewTemp();
 			string? val = null;
 			if (conj.InitialValue != null)
 			{
 				val = LowerExpression(conj.InitialValue);
-				Emit(OpCode.Copy, conj.Name, val);
+				Emit(OpCode.Copy, temp, val);
+				AddVar(conj.Name, temp);
 			}
 
 			return conj.Name;

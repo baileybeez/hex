@@ -72,11 +72,10 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(2));
+			Assert.That(list.Count, Is.EqualTo(1));
 			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Inc));
 			Assert.That(list[0].leftOperand, Is.EqualTo("ᚫ"));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Copy));
-			Assert.That(list[1].result, Is.EqualTo("ᚫ"));
+			Assert.That(list[0].result, Is.EqualTo("ᚫ"));
 		}
 
 		[Test]
@@ -88,11 +87,10 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(2));
+			Assert.That(list.Count, Is.EqualTo(1));
 			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Dec));
 			Assert.That(list[0].leftOperand, Is.EqualTo("ᚫ"));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Copy));
-			Assert.That(list[1].result, Is.EqualTo("ᚫ"));
+			Assert.That(list[0].result, Is.EqualTo("ᚫ"));
 
 		}
 	}

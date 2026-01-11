@@ -51,13 +51,13 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(10));
+			Assert.That(list.Count, Is.EqualTo(9));
 			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Label));
 			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Greater));
 			Assert.That(list[5].opCode, Is.EqualTo(OpCode.JumpIfTrue));
 			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Inc));
-			Assert.That(list[8].opCode, Is.EqualTo(OpCode.Jump));
-			Assert.That(list[9].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[7].opCode, Is.EqualTo(OpCode.Jump));
+			Assert.That(list[8].opCode, Is.EqualTo(OpCode.Label));
 		}
 
 		[Test]

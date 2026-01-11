@@ -5,6 +5,7 @@ using Hex.Arcanum.IR;
 using Hex.Arcanum.Lexer;
 using Hex.Arcanum.Parser;
 using HexTests.Emulation;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
 
 namespace HexTests.Programs
 {
@@ -95,6 +96,25 @@ namespace HexTests.Programs
 			Assert.That(console.Logs[4], Is.EqualTo("5"));
 			Assert.That(console.Logs[7], Is.EqualTo("21"));
 			Assert.That(console.Logs[10], Is.EqualTo("89"));
+		}
+
+		[Test]
+		public void Factorial()
+		{
+			TestConsole console = new();
+			var program = CompileToIR(Constants.Programs.kFactorial);
+
+			_emu.SetConsole(console);
+			_emu.Reset();
+			_emu.Run(program);
+			if (console != null)
+				console.Flush();
+
+			Assert.That(_emu.GetUsedMemoryCount(), Is.EqualTo(0));
+
+			Assert.That(console, Is.Not.Null);
+			Assert.That(console.Logs.Count, Is.EqualTo(1));
+			Assert.That(console.Logs[0], Is.EqualTo("Factorial of 12 is 479001600.\\n"));
 		}
 	}
 }

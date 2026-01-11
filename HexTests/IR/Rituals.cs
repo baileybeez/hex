@@ -80,8 +80,7 @@ namespace HexTests.IR
 				OpCode.CopyToReg, 
 				OpCode.CopyToReg, 
 				OpCode.Call, 
-				OpCode.CopyFromReg, 
-				OpCode.Copy, 
+				OpCode.CopyFromReg,
 				OpCode.Whisper, 
 				OpCode.LeaveFunc, 
 				OpCode.Return
@@ -100,8 +99,7 @@ namespace HexTests.IR
 				OpCode.SetupCall,
 				OpCode.CopyToReg,
 				OpCode.Call, 
-				OpCode.CopyFromReg,
-				OpCode.Copy
+				OpCode.CopyFromReg
 			};
 			var list = Lower(Constants.kRitualInvokationIntoVar);
 

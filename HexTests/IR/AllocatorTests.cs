@@ -46,18 +46,17 @@ namespace HexTests.IR
 			var rangeList = _alloc.ComputeLiveRanges(irList);
 
 			Assert.That(rangeList, Is.Not.Null);
-			Assert.That(rangeList.Count, Is.EqualTo(11));
+			Assert.That(rangeList.Count, Is.EqualTo(10));
 			AssertRange(rangeList[0], "t0", 2, 7);
-			AssertRange(rangeList[1], "t1", 3, 4);
-			AssertRange(rangeList[2], "ᚫ", 4, 17);
-			AssertRange(rangeList[3], "t2", 5, 6);
-			AssertRange(rangeList[4], "ᛒ", 6, 16);
-			AssertRange(rangeList[5], "ᚲᛸᚲᛚᛖ", 7, 20);
-			AssertRange(rangeList[6], "t3", 10, 11);
-			AssertRange(rangeList[7], "t4", 11, 12);
-			AssertRange(rangeList[8], "t5", 13, 14);
-			AssertRange(rangeList[9], "ᚲ", 14, 16);
-			AssertRange(rangeList[10], "t6", 19, 20);
+			AssertRange(rangeList[1], "t2", 3, 4);
+			AssertRange(rangeList[2], "t1", 4, 20);
+			AssertRange(rangeList[3], "t4", 5, 6);
+			AssertRange(rangeList[4], "t3", 6, 20);
+			AssertRange(rangeList[5], "t6", 7, 20);
+			AssertRange(rangeList[6], "t7", 10, 20);
+			AssertRange(rangeList[7], "t8", 11, 20);
+			AssertRange(rangeList[8], "t10", 13, 20);
+			AssertRange(rangeList[9], "t9", 14, 20);
 		}
 
 		[Test] 
@@ -91,9 +90,8 @@ namespace HexTests.IR
 			Assert.That(results.RangeList[5].AssignedReg, Is.EqualTo(Registers.R10));
 			Assert.That(results.RangeList[6].AssignedReg, Is.EqualTo(Registers.R11));
 			Assert.That(results.RangeList[7].AssignedReg, Is.EqualTo(Registers.RCX));
-			Assert.That(results.RangeList[8].AssignedReg, Is.EqualTo(Registers.R11));
-			Assert.That(results.RangeList[9].AssignedReg, Is.EqualTo(Registers.RCX));
-			Assert.That(results.RangeList[10].AssignedReg, Is.EqualTo(Registers.R11));
+			Assert.That(results.RangeList[8].AssignedReg, Is.EqualTo(Registers.RDX));
+			Assert.That(results.RangeList[9].AssignedReg, Is.EqualTo(Registers.RSI));
 		}
 
 		[Test]
@@ -127,12 +125,11 @@ namespace HexTests.IR
 			Assert.That(finalizedIr[10].result, Is.EqualTo("R11"));
 			Assert.That(finalizedIr[11].result, Is.EqualTo("RCX"));
 			Assert.That(finalizedIr[12].result, Is.EqualTo("RCX"));
-			Assert.That(finalizedIr[13].result, Is.EqualTo("R11"));
-			Assert.That(finalizedIr[14].result, Is.EqualTo("RCX"));
+			Assert.That(finalizedIr[13].result, Is.EqualTo("RDX"));
+			Assert.That(finalizedIr[14].result, Is.EqualTo("RSI"));
 			Assert.That(finalizedIr[15].result, Is.EqualTo("R9"));
 			Assert.That(finalizedIr[16].result, Is.EqualTo("R8"));
-			Assert.That(finalizedIr[19].result, Is.EqualTo("R11"));
-			Assert.That(finalizedIr[20].result, Is.EqualTo("R10"));
+			Assert.That(finalizedIr[19].result, Is.EqualTo("R10"));
 		}
 	}
 }

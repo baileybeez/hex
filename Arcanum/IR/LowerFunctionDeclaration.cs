@@ -12,7 +12,7 @@ namespace Hex.Arcanum.IR
 			Emit(OpCode.Label, $"func_{fncHeader.FunctionName}");
 			Emit(OpCode.EnterFunc, String.Empty, "0");
 
-			_paramMap.Clear();
+			PushScope();
 			for (int idx = fncHeader.Parameters.Count - 1; idx >= 0; idx--)
 			{
 				var param = fncHeader.Parameters[idx];
@@ -22,8 +22,8 @@ namespace Hex.Arcanum.IR
 					Emit(OpCode.CopyFromReg, temp, param.Location);
 				else
 					Emit(OpCode.LoadFromStack, temp, param.Location);
-				
-				_paramMap.Add(param.Name, temp);
+
+				AddVar(param.Name, temp);
 			}
 
 			// check for return command and emit a void return if needed
@@ -34,7 +34,7 @@ namespace Hex.Arcanum.IR
 				Emit(OpCode.Return, String.Empty);
 			}
 
-			_paramMap.Clear();
+			PopScope();
 			return String.Empty;
 		}
 	}

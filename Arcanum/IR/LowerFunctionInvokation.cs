@@ -31,8 +31,14 @@ namespace Hex.Arcanum.IR
 			Emit(OpCode.Call, "RAX", $"func_{call.FunctionName}", argCount.ToString());
 			if (!String.IsNullOrEmpty(call.RetVar))
 			{
-				Emit(OpCode.CopyFromReg, retTemp, "RAX");
-				Emit(OpCode.Copy, call.RetVar, retTemp);
+				string? varTemp = LookupVar(call.RetVar);
+				if (varTemp == null)
+				{
+					varTemp = NewTemp();
+					AddVar(call.RetVar, varTemp);
+				}
+
+				Emit(OpCode.CopyFromReg, varTemp, "RAX");
 			}
 
 			if (argCount > 6)

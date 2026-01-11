@@ -13,9 +13,14 @@ namespace Hex.Arcanum.IR
 			string startLabel = NewLabel();
 			string termLabel = NewLabel();
 
-			string itr = NewTemp();
-			string truth = NewTemp();
 			string swap = frs.VarName.Name;
+			string? itr = LookupVar(frs.VarName.Name);
+			if (itr == null)
+			{
+				itr = NewTemp();
+				AddVar(frs.VarName.Name, itr);
+			}
+			string truth = NewTemp();
 			string end = LowerExpression(frs.To);
 
 			Emit(OpCode.Copy, itr, LowerExpression(frs.From));
@@ -23,8 +28,7 @@ namespace Hex.Arcanum.IR
 			Emit(OpCode.Greater, truth, itr, end);
 			Emit(OpCode.JumpIfTrue, truth, termLabel);
 			LowerScope(frs.InnerScope);
-			Emit(OpCode.Inc, swap, itr);
-			Emit(OpCode.Copy, itr, swap);
+			Emit(OpCode.Inc, itr, itr);
 			Emit(OpCode.Jump, String.Empty, startLabel);
 			Emit(OpCode.Label, termLabel);
 

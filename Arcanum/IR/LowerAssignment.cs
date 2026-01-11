@@ -10,10 +10,17 @@ namespace Hex.Arcanum.IR
 		{
 			var assign = AssertValid<AssignmentStatement>(expr);
 
-			string temp = LowerExpression(assign.ValueExpression);
-			Emit(OpCode.Copy, assign.VarName, temp);
+			string? varTemp = LookupVar(assign.VarName);
+			if (varTemp == null)
+			{
+				varTemp = NewTemp();
+				AddVar(assign.VarName, varTemp);
+			}
 
-			return assign.VarName;
+			string valTemp = LowerExpression(assign.ValueExpression);
+			Emit(OpCode.Copy, varTemp, valTemp);
+
+			return varTemp;
 		}
 	}
 }
