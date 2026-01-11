@@ -8,11 +8,13 @@ namespace HexTests.Emulation
 		{
 			Emulate(Constants.kRitual_Add_Call);
 
-			Assert.That(_emu.MemCount(), Is.EqualTo(5));
+			Assert.That(_emu.MemCount(), Is.EqualTo(6));
 			Assert.That(U64Val("t0"), Is.EqualTo(3));
-			Assert.That(U64Val("t3"), Is.EqualTo(2));
-			Assert.That(U64Val("t1"), Is.EqualTo(5));
+			Assert.That(U64Val("t1"), Is.EqualTo(2));
 			Assert.That(U64Val("t2"), Is.EqualTo(5));
+			Assert.That(U64Val("t3"), Is.EqualTo(2));
+			Assert.That(U64Val("t4"), Is.EqualTo(3));
+			Assert.That(U64Val("t6"), Is.EqualTo(5));
 		}
 
 		[Test]
