@@ -23,10 +23,13 @@ namespace Hex.Arcanum.IR
 					{
 						var named = AssertValid<NamedStatement>(unary.Right);
 						var code = unary.Operator == UnaryOperatorTypes.Amplify ? OpCode.Inc : OpCode.Dec;
-						
+
+						string? tempName = LookupVar(named.Name);
+						if (tempName == null)
+							tempName = named.Name;
+
 						// perform INC / DEC then copy value back into var
-						Emit(code, resultTemp, named.Name);
-						Emit(OpCode.Copy, named.Name, resultTemp);
+						Emit(code, tempName, tempName);
 					}
 					break;
 			}

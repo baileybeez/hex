@@ -4,9 +4,12 @@ namespace Hex
 {
 	public sealed class StandardConsole : IConsole
 	{
+		private static readonly char[] kTrimChars = { '\r', '\n' };
+
 		public void Write(string text)
 		{
-			Console.Write(text.TrimEnd());
+			string str = text.TrimEnd(kTrimChars);
+			Console.Write(str);
 			if (text.EndsWith("\r") || text.EndsWith("\n"))
 				Flush();
 		}

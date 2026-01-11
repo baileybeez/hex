@@ -8,12 +8,11 @@ namespace Hex.Arcanum.IR
 	{
 		public const string kMissingRetVal = "(no return value)";
 
-		// TODO: this needs to be part of the callstack object so we can recursive/nest call functions
-		private readonly Dictionary<string, string> _paramMap = new();
-
 		public string LowerScope(Expression expr)
 		{
 			var scope = AssertValid<Scope>(expr);
+			var curr = PushScope();
+
 			string retval = kMissingRetVal;
 			for (int i = 0; i < scope.Children.Count; i++)
 			{
@@ -25,6 +24,7 @@ namespace Hex.Arcanum.IR
 					retval = kMissingRetVal;
 			}
 
+			PopScope();
 			return retval;
 		}
 	}

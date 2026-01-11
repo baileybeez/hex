@@ -9,8 +9,10 @@ namespace Hex.Arcanum.IR
 		public string LowerNamedType(Expression expr)
 		{
 			var conj = AssertValid<NamedStatement>(expr);
-			if (_paramMap.ContainsKey(conj.Name))
-				return _paramMap[conj.Name];
+
+			var mapped = LookupVar(conj.Name);
+			if (mapped != null)
+				return mapped;
 
 			return conj.Name;
 		}

@@ -18,7 +18,7 @@ namespace HexTests.Compilation
 			var prog = CompileFrom(Constants.Programs.kSimpleAdd);
 
 			Assert.That(prog, Is.Not.Null);
-			Assert.That(prog.Count, Is.EqualTo(28));
+			Assert.That(prog.Count, Is.EqualTo(27));
 		}
 
 		[Test]
@@ -27,7 +27,7 @@ namespace HexTests.Compilation
 			var prog = CompileFrom(Constants.Programs.kFibonacci);
 
 			Assert.That(prog, Is.Not.Null);
-			Assert.That(prog.Count, Is.EqualTo(41));
+			Assert.That(prog.Count, Is.EqualTo(40));
 		}
 	}
 }
