@@ -25,7 +25,7 @@ To get started using Hex, you'll need .NET 10. All of Hex can be easily built by
 
 ## Examples
 
-You can run any of the included examples via the CLI: 
+You can run any of the included [examples](./examples/) via the CLI: 
 ```console
 > hex invoke [codex file]
 ```
