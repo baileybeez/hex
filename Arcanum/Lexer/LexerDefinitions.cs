@@ -10,9 +10,11 @@ namespace Hex.Arcanum.Lexer
 		public const int kState_Number = 1;
 		public const int kState_Identifier = 2;
 		public const int kState_String = 3;
+		public const int kState_Char = 4;
 
 		private static readonly Rune kEmptyRune = new Rune(' ');
 		private static readonly Rune kDoubleQuote = new Rune('\"');
+		private static readonly Rune kSingleQuote = new Rune('\'');
 		private static readonly Rune kNewLineRune = new Rune('\n');
 
 		private static readonly string kNewLine = "\n";
@@ -78,6 +80,10 @@ namespace Hex.Arcanum.Lexer
 			{ RuneCodes.CWSemiArrow, LexemeTypes.StirCW },
 			{ RuneCodes.CCWSemiArrow, LexemeTypes.StirCCW },
 
+			{ RuneCodes.Indicator, LexemeTypes.Anchor },
+			{ RuneCodes.CircleJot, LexemeTypes.Reveal },
+
+			{ RuneCodes.Aether, LexemeTypes.Aether },
 			{ RuneCodes.Air, LexemeTypes.Air },
 			{ RuneCodes.Fire, LexemeTypes.Fire },
 			{ RuneCodes.Earth, LexemeTypes.Earth },
@@ -85,6 +91,8 @@ namespace Hex.Arcanum.Lexer
 
 			{ RuneCodes.Salt, LexemeTypes.Salt },
 			{ RuneCodes.Ash, LexemeTypes.Ash },
+			{ RuneCodes.Sulfur, LexemeTypes.Sulfur },
+			{ RuneCodes.Brimstone, LexemeTypes.Brimstone },
 		};
 
 		public static bool IsIdentifier(string str)

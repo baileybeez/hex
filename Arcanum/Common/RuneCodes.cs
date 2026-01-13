@@ -45,6 +45,9 @@ namespace Hex.Arcanum.Common
 		public static readonly int DoubleArrowRight = 0x21D2; // ⇒
 		public static readonly int RightLeftArrows = 0x21C4; // ⇄
 
+		public static readonly int Indicator = 0x2316; // ⌖
+		public static readonly int CircleJot = 0x233E; // ⌾
+
 		public static readonly int LilithMoon = 0x26B8; // ⚸
 		public static readonly int SelenaMoon = 0x2BDD; // ⯝
 
@@ -56,6 +59,8 @@ namespace Hex.Arcanum.Common
 		public static readonly int Earth = 0x1F703; // 🜃
 		public static readonly int Water = 0x1F704; // 🜄
 
+		public static readonly int Sulfur = 0x1F70D; // 🜍
+		public static readonly int Brimstone = 0x1F70F; // 🜏
 		public static readonly int Salt = 0x1F714; // 🜔
 
 		public static readonly int Tartar = 0x1F740; // 🝀

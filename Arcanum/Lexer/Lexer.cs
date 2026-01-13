@@ -68,6 +68,18 @@ namespace Hex.Arcanum.Lexer
 							AddLexeme(ls, LexemeTypes.Number);
 						break;
 
+					case kState_Char:
+						if (rune == kSingleQuote)
+						{
+							if (ls.Len() > 1)
+								throw new HexException($"Character literal too long at line {ls.Line}, col {ls.Col}");
+
+							AddLexeme(ls, LexemeTypes.Char);
+							idx++;
+							continue;
+						}
+						break;
+
 					case kState_String:
 						if (rune == kDoubleQuote)
 						{
@@ -91,6 +103,8 @@ namespace Hex.Arcanum.Lexer
 						ls.SwitchTo(kState_Identifier, idx, rune);
 					else if (rune == kDoubleQuote)
 						ls.SwitchTo(kState_String, idx, kEmptyRune);
+					else if (rune == kSingleQuote)
+						ls.SwitchTo(kState_Char, idx, kEmptyRune);
 					else if (!Rune.IsWhiteSpace(rune))
 					{
 						if (!_symbolMap.ContainsKey(rune.Value))

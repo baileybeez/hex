@@ -22,6 +22,9 @@ namespace HexTests
 		public const string kVarName = "ᚫ";
 		public const string kConjureVar = "🝣 🜂 🜔 ᚫ";
 		public const string kConjureVarAssign = "🝣 🜃 🜔 ᚫ ← 1";
+		public const string kConjurePointer = "🝣 🜀 🜔 ᚫ ← ⌖ ᛖ";
+		public const string kConjureChar = "🝣 🜂 🜍 ᚫ ← 'A'";
+		public const string kConjureString = "🝣 🜂 🜏 ᚫ ← \"hello world\"";
 		public const string kAssignmentScript = "ᚫ ← 1";
 
 		public const string kSimpleIfStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟤ ";

@@ -9,7 +9,8 @@ namespace Hex.Arcanum.Common
 		//Bool = 2,
 		U64 = 3,
 		//I64 = 4,
-		//String = 5
+		Char = 5, 
+		String = 6,
 	}
 
 	public enum VariableFlags
@@ -19,7 +20,6 @@ namespace Hex.Arcanum.Common
 		UnknownType = 1,
 		Volitile = 2,
 		Constant = 3,
-
 	}
 
 	public sealed class Variable
