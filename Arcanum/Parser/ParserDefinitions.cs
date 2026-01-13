@@ -13,12 +13,14 @@ namespace Hex.Arcanum.Parser
 		{
 			_varTypeMap.Add(LexemeTypes.Ash, VariableTypes.Void);
 			_varTypeMap.Add(LexemeTypes.Salt, VariableTypes.U64);
+			_varTypeMap.Add(LexemeTypes.Sulfur, VariableTypes.Char);
+			_varTypeMap.Add(LexemeTypes.Brimstone, VariableTypes.String);
 		}
 
 		private void SetupVariableFlagMap()
 		{
 			//_varFlagsMap.Add(TokenTypes.Aether, VariableFlags.Nullable);
-			_varFlagsMap.Add(LexemeTypes.Air, VariableFlags.UnknownType);
+			// _varFlagsMap.Add(LexemeTypes.Air, VariableFlags.UnknownType);
 			_varFlagsMap.Add(LexemeTypes.Fire, VariableFlags.Volitile);
 			_varFlagsMap.Add(LexemeTypes.Earth, VariableFlags.Constant);
 		}
