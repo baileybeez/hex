@@ -5,6 +5,8 @@ namespace Hex.Arcanum.Allocator
 {
 	public sealed partial class RegisterAllocator
 	{
+		public const string kStrPrefix = "STR_";
+
 		private readonly Dictionary<string, LiveRange> _rangeMap = new();
 		
 		public List<LiveRange> ComputeLiveRanges(List<IRInst> irList)
@@ -42,7 +44,10 @@ namespace Hex.Arcanum.Allocator
 		}
 
 		public void UpdateRangeMap(string entry, int idx)
-		{			
+		{
+			if (entry.StartsWith(kStrPrefix))
+				return;
+
 			if (!_rangeMap.ContainsKey(entry))
 				_rangeMap.Add(entry, new LiveRange(entry, idx));
 

@@ -29,6 +29,7 @@ namespace Hex.Arcanum.Common
 		public VariableFlags Flag { get; private set; }
 
 		private uint _uValue = 0;
+		private char _cValue = ' ';
 
 		public Variable(string name, VariableTypes type, VariableFlags flag)
 		{
@@ -58,9 +59,22 @@ namespace Hex.Arcanum.Common
 			return _uValue;
 		}
 
+		public char U8()
+		{
+			if (Type != VariableTypes.Char)
+				throw new InvalidCastException($"{Name} is type {Type}!");
+
+			return _cValue;
+		}
+
 		public void SetValue(uint uValue)
 		{
 			_uValue = uValue; 
+		}
+
+		public void SetValue(char cValue)
+		{
+			_cValue = cValue;
 		}
 	}
 }

@@ -49,14 +49,14 @@ namespace HexTests.IR
 			Assert.That(rangeList.Count, Is.EqualTo(10));
 			AssertRange(rangeList[0], "t0", 2, 7);
 			AssertRange(rangeList[1], "t2", 3, 4);
-			AssertRange(rangeList[2], "t1", 4, 20);
+			AssertRange(rangeList[2], "t1", 4, 22);
 			AssertRange(rangeList[3], "t4", 5, 6);
-			AssertRange(rangeList[4], "t3", 6, 20);
-			AssertRange(rangeList[5], "t6", 7, 20);
-			AssertRange(rangeList[6], "t7", 10, 20);
-			AssertRange(rangeList[7], "t8", 11, 20);
-			AssertRange(rangeList[8], "t10", 13, 20);
-			AssertRange(rangeList[9], "t9", 14, 20);
+			AssertRange(rangeList[4], "t3", 6, 22);
+			AssertRange(rangeList[5], "t5", 7, 22);
+			AssertRange(rangeList[6], "t6", 11, 22);
+			AssertRange(rangeList[7], "t7", 12, 22);
+			AssertRange(rangeList[8], "t9", 14, 22);
+			AssertRange(rangeList[9], "t8", 15, 22);
 		}
 
 		[Test] 
@@ -122,14 +122,14 @@ namespace HexTests.IR
 			Assert.That(finalizedIr[5].result, Is.EqualTo("R10"));
 			Assert.That(finalizedIr[6].result, Is.EqualTo("R8"));
 			Assert.That(finalizedIr[7].result, Is.EqualTo("R10"));
-			Assert.That(finalizedIr[10].result, Is.EqualTo("R11"));
-			Assert.That(finalizedIr[11].result, Is.EqualTo("RCX"));
+			Assert.That(finalizedIr[11].result, Is.EqualTo("R11"));
 			Assert.That(finalizedIr[12].result, Is.EqualTo("RCX"));
-			Assert.That(finalizedIr[13].result, Is.EqualTo("RDX"));
-			Assert.That(finalizedIr[14].result, Is.EqualTo("RSI"));
-			Assert.That(finalizedIr[15].result, Is.EqualTo("R9"));
-			Assert.That(finalizedIr[16].result, Is.EqualTo("R8"));
-			Assert.That(finalizedIr[19].result, Is.EqualTo("R10"));
+			Assert.That(finalizedIr[13].result, Is.EqualTo("RCX"));
+			Assert.That(finalizedIr[14].result, Is.EqualTo("RDX"));
+			Assert.That(finalizedIr[15].result, Is.EqualTo("RSI"));
+			Assert.That(finalizedIr[16].result, Is.EqualTo("R9"));
+			Assert.That(finalizedIr[17].result, Is.EqualTo("R8"));
+			Assert.That(finalizedIr[21].result, Is.EqualTo("R10"));
 		}
 	}
 }

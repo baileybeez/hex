@@ -13,6 +13,7 @@ namespace Hex.Arcanum.IR
 			_handlerMap.Clear();
 			_handlerMap[ExpressionTypes.Scope] = LowerScope;
 			_handlerMap[ExpressionTypes.NumberLiteral] = LowerNumberLiteral;
+			_handlerMap[ExpressionTypes.CharLiteral] = LowerCharLiteral;
 			_handlerMap[ExpressionTypes.StringLiteral] = LowerStringLiteral;
 			_handlerMap[ExpressionTypes.BinaryOp] = LowerBinaryOperation;
 			_handlerMap[ExpressionTypes.UnaryOp] = LowerUnaryOperation;

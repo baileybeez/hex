@@ -10,7 +10,7 @@ namespace Hex.Arcanum.IR
 		{
 			var conj = AssertValid<NamedStatement>(expr);
 
-			var mapped = LookupVar(conj.Name);
+			var mapped = LookupMappedVar(conj.Name);
 			if (mapped != null)
 				return mapped;
 

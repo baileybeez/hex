@@ -25,7 +25,7 @@ namespace HexTests
 		public const string kConjurePointer = "🝣 🜀 🜔 ᚫ ← ⌖ ᛖ";
 		public const string kConjureChar = "🝣 🜂 🜍 ᚫ ← 'A'";
 		public const string kConjureString = "🝣 🜂 🜏 ᚫ ← \"hello world\"";
-		public const string kAssignmentScript = "ᚫ ← 1";
+		public const string kAssignmentScript = "🝣 🜂 🜔 ᚫ \r\n ᚫ ← 1";
 
 		public const string kSimpleIfStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟤ ";
 		public const string kSimpleIfElseIfStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟐ ↝ ᛖ < 0 \r\n \r\n ⟤ ";
@@ -54,6 +54,8 @@ namespace HexTests
 		public readonly string kSimpleAdd = "⚝ ᚠᛟᛟ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n   🝀 🜃 🜔 ᛒ ↷\r\n◯⟥\r\n   🝑 ᚫ + ᛒ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 2\r\n\r\n   🝣 🜂 🜔 ᛇ\r\n\r\n   🝣 🝥\r\n   🝀 ᚫ 🝥 ↷\r\n   🝀 ᛒ 🝥 ↷\r\n   🝠 ᚠᛟᛟ ⇒ ᛇ\r\n⟤ ";
 		public readonly string kFizzBuzz = "⚝ ᚠᛇᛉᛉ → 🝗\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n◯⟥\r\n   🝣 🜃 🜔 ᛒ ← ᚫ % 3\r\n   🝣 🜃 🜔 ᛞ ← ᚫ % 5\r\n   \r\n   ⟥ ↝ ᛒ ∃ 0 ⋏ ᛞ ∃ 0\r\n      \u2bdd \"fizzbuzz\"\r\n   ⟐ ↝ ᛒ ∃ 0\r\n      \u2bdd \"fizz\"\r\n   ⟐ ↝ ᛞ ∃ 0\r\n      \u2bdd \"buzz\"\r\n   ⟡ \r\n      \u2bdd ᚫ\r\n   ⟤\r\n\r\n   \u2bdd \"\n\"\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᛇ ← 1\r\n   ⟥ ⇄ ᛇ 1 ⇒ 50\r\n      🝣 🝥\r\n      🝀 ᛇ 🝥 ↷\r\n      🝠 ᚠᛇᛉᛉ\r\n   ⟤\r\n⟤ ";
 		public readonly string kFibonacci = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 1\r\n   🝣 🜂 🜔 ᚲ \r\n\r\n   🝣 🜂 🜔 ᚲᛸᚲᛚᛖ ← ᚷᛖᚾ\r\n   \r\n   ⯝ \"1\n\"\r\n   ⟥ ↻ ᚲᛸᚲᛚᛖ > 0 \r\n      ᚲ ← ᛒ + ᚫ\r\n      ᚫ ← ᛒ\r\n      ᛒ ← ᚲ\r\n\r\n      ⯝ ᚫ\r\n      ⯝ \"\n\"\r\n      ⇓ ᚲᛸᚲᛚᛖ\r\n   ⟤\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚷᛖᚾ ← 10\r\n\r\n   🝣 🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ\r\n⟤\r\n ";
-		public readonly string kFactorial = "\r\n⚝ ᚠᚫᚲᛏ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚠ ← 1\r\n   ⟥ ⇄ ᛇ 1 ⇒ ᚫ\r\n      ᚠ ← ᚠ * ᛇ\r\n   ⟤\r\n\r\n   🝑 ᚠ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᛇ ← 12\r\n   🝣 🜂 🜔 ᚫ ← 0\r\n\r\n   🝣 🝥\r\n   🝀 ᛇ 🝥 ↷\r\n   🝠 ᚠᚫᚲᛏ ⇒ ᚫ\r\n   \r\n   \u2bdd \"Factorial of \"\r\n   \u2bdd ᛇ\r\n   \u2bdd \" is \"\r\n   \u2bdd ᚫ\r\n   \u2bdd \".\\n\"\r\n⟤ ";
+		public readonly string kFactorial = "⚝ ᚠᚫᚲᛏ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚠ ← 1\r\n   ⟥ ⇄ ᛇ 1 ⇒ ᚫ\r\n      ᚠ ← ᚠ * ᛇ\r\n   ⟤\r\n\r\n   🝑 ᚠ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᛇ ← 12\r\n   🝣 🜂 🜔 ᚫ ← 0\r\n\r\n   🝣 🝥\r\n   🝀 ᛇ 🝥 ↷\r\n   🝠 ᚠᚫᚲᛏ ⇒ ᚫ\r\n   \r\n   \u2bdd \"Factorial of \"\r\n   \u2bdd ᛇ\r\n   \u2bdd \" is \"\r\n   \u2bdd ᚫ\r\n   \u2bdd \".\\n\"\r\n⟤ ";
+
+		public readonly string kStrLen = "𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜏 ᚫ ← \"hello world\"\r\n   🝣 🜂 🜔 ᛇ ← 0\r\n\r\n   ⟥ ↻ ᚫ ∄ 0 \r\n      ᚫ ← ᚫ + 1\r\n      ᛇ ← ᛇ + 1\r\n   ⟤\r\n⟤\r\n ";
 	}
 }

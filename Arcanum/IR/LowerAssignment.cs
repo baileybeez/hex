@@ -10,15 +10,34 @@ namespace Hex.Arcanum.IR
 		{
 			var assign = AssertValid<AssignmentStatement>(expr);
 
-			string? varTemp = LookupVar(assign.VarName);
+			Variable? var = LookupVariable(assign.VarName);
+			if (var == null)
+				throw new HexException($"{assign.VarName} used before being conjured.");
+
+			string? varTemp = LookupMappedVar(assign.VarName);
 			if (varTemp == null)
 			{
 				varTemp = NewTemp();
-				AddVar(assign.VarName, varTemp);
+				AddMappedVar(assign.VarName, varTemp);
 			}
 
 			string valTemp = LowerExpression(assign.ValueExpression);
-			Emit(OpCode.Copy, varTemp, valTemp);
+			OpCode opCopy = OpCode.None;
+			switch (var.Type)
+			{
+				default:
+					throw new HexException($"Unsupported type: '{var.Type}'");
+				case VariableTypes.U64:
+					opCopy = OpCode.CopyU64;
+					break;
+				case VariableTypes.Char:
+					opCopy = OpCode.CopyChar;
+					break;
+				case VariableTypes.String:
+					opCopy = OpCode.CopyString;
+					break;
+			}
+			Emit(opCopy, varTemp, valTemp);
 
 			return varTemp;
 		}

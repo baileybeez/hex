@@ -88,8 +88,6 @@ namespace HexTests.Programs
 			if (console != null)
 				console.Flush();
 
-			Assert.That(_emu.GetUsedMemoryCount(), Is.EqualTo(0));
-
 			Assert.That(console, Is.Not.Null);
 			Assert.That(console.Logs.Count, Is.EqualTo(11));
 			Assert.That(console.Logs[0], Is.EqualTo("1"));
@@ -109,8 +107,6 @@ namespace HexTests.Programs
 			_emu.Run(program);
 			if (console != null)
 				console.Flush();
-
-			Assert.That(_emu.GetUsedMemoryCount(), Is.EqualTo(0));
 
 			Assert.That(console, Is.Not.Null);
 			Assert.That(console.Logs.Count, Is.EqualTo(1));

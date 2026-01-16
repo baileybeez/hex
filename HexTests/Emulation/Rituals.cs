@@ -26,7 +26,7 @@ namespace HexTests.Emulation
 			Assert.That(_emu.MemCount(), Is.EqualTo(7));
 			Assert.That(_emu.GetRegister("RDI"), Is.EqualTo(4));
 			Assert.That(_emu.GetRegister("RAX"), Is.EqualTo(ans));
-			Assert.That(U64Val("t5"), Is.EqualTo(ans));
+			Assert.That(U64Val("t4"), Is.EqualTo(ans));
 		}
 	}
 }
