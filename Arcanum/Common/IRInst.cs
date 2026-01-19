@@ -30,8 +30,9 @@ namespace Hex.Arcanum.Common
 		Or = 28,
 
 		// assignment
-		Copy = 31,
-		LoadU64Const = 32,
+		LoadU64Const = 30,
+		LoadCharConst = 31,
+		LoadStringConst = 32,
 
 		// control flow
 		Jump = 40,
@@ -45,7 +46,10 @@ namespace Hex.Arcanum.Common
 		LoadAddr = 52,
 
 		// 
-		Convert = 60,
+		CopyU64 = 60, 
+		CopyChar = 61, 
+		CopyString = 62,
+		CopyByte = 63,
 
 		// stack
 		Push = 70,

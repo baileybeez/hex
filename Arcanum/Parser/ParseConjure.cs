@@ -78,7 +78,7 @@ namespace Hex.Arcanum.Parser
 			Lexeme identifier = Require(LexemeTypes.Identifier);
 			ValidateUnusedIdentifier(identifier.Text);
 
-			Variable newVar = _scopeStack.Peek().AddVariable(identifier.Text, varType, varFlag);
+			Variable newVar = AddVar(identifier.Text, varType, varFlag);
 			Expression? exprVal = null;
 			if (Peek().Type == LexemeTypes.LeftArrow)
 			{

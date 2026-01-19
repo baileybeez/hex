@@ -23,7 +23,8 @@ namespace Hex.Arcanum.IR
 				else
 					Emit(OpCode.LoadFromStack, temp, param.Location);
 
-				AddVar(param.Name, temp);
+				AddVariable(param.Name, param.Type, param.Flag);
+				AddMappedVar(param.Name, temp);
 			}
 
 			// check for return command and emit a void return if needed

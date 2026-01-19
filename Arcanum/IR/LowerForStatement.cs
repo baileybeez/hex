@@ -14,16 +14,17 @@ namespace Hex.Arcanum.IR
 			string termLabel = NewLabel();
 
 			string swap = frs.VarName.Name;
-			string? itr = LookupVar(frs.VarName.Name);
+			string? itr = LookupMappedVar(frs.VarName.Name);
 			if (itr == null)
 			{
 				itr = NewTemp();
-				AddVar(frs.VarName.Name, itr);
+				AddVariable(frs.VarName.Name, VariableTypes.U64, VariableFlags.Volitile);
+				AddMappedVar(frs.VarName.Name, itr);
 			}
 			string truth = NewTemp();
 			string end = LowerExpression(frs.To);
 
-			Emit(OpCode.Copy, itr, LowerExpression(frs.From));
+			Emit(OpCode.CopyU64, itr, LowerExpression(frs.From));
 			Emit(OpCode.Label, startLabel);
 			Emit(OpCode.Greater, truth, itr, end);
 			Emit(OpCode.JumpIfTrue, truth, termLabel);

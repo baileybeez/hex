@@ -12,6 +12,8 @@ namespace Hex.Arcanum.Parser
 
 			Require(LexemeTypes.Whisper);
 			Lexeme phrase = NextLexeme();
+
+			// TODO: this should be handled by ParseExpression
 			switch (phrase.Type)
 			{
 				default: 

@@ -15,11 +15,22 @@ namespace Hex.Arcanum.IR
 			return temp;
 		}
 
+		public string LowerCharLiteral(Expression expr)
+		{
+			var lit = AssertValid<CharLiteral>(expr);
+
+			string temp = NewTemp();
+			Emit(OpCode.LoadCharConst, temp, lit.Value.ToString());
+			return temp;
+		}
+
 		public string LowerStringLiteral(Expression expr)
 		{
 			var lit = AssertValid<StringLiteral>(expr);
-			// TODO: push this into resources and emit an address instead
-			return lit.Value;
+
+			string strTemp = NewString();
+			Emit(OpCode.LoadStringConst, strTemp, lit.Value);
+			return strTemp;
 		}
 	}
 }

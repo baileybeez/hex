@@ -9,7 +9,8 @@ namespace Hex.Arcanum.Common
 		//Bool = 2,
 		U64 = 3,
 		//I64 = 4,
-		//String = 5
+		Char = 5, 
+		String = 6,
 	}
 
 	public enum VariableFlags
@@ -19,7 +20,6 @@ namespace Hex.Arcanum.Common
 		UnknownType = 1,
 		Volitile = 2,
 		Constant = 3,
-
 	}
 
 	public sealed class Variable
@@ -29,6 +29,7 @@ namespace Hex.Arcanum.Common
 		public VariableFlags Flag { get; private set; }
 
 		private uint _uValue = 0;
+		private char _cValue = ' ';
 
 		public Variable(string name, VariableTypes type, VariableFlags flag)
 		{
@@ -58,9 +59,22 @@ namespace Hex.Arcanum.Common
 			return _uValue;
 		}
 
+		public char U8()
+		{
+			if (Type != VariableTypes.Char)
+				throw new InvalidCastException($"{Name} is type {Type}!");
+
+			return _cValue;
+		}
+
 		public void SetValue(uint uValue)
 		{
 			_uValue = uValue; 
+		}
+
+		public void SetValue(char cValue)
+		{
+			_cValue = cValue;
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿
+﻿using Hex.Arcanum.Emulator;
+
 namespace HexTests.Emulation
 {
 	public class Scopes : EmulateTestUtilities
@@ -6,10 +7,10 @@ namespace HexTests.Emulation
 		[Test]
 		public void For()
 		{
-			Emulate(Constants.kSimpleForStatement);
+			Emulate(Constants.kSimpleForStatement, EmulatorMemMode.Mapped);
 
-			var condition = _emu.GetValue("t1");
-			var itor = _emu.GetValue("t0");
+			var condition = _emu.GetBool("t1");
+			var itor = _emu.GetU64("t0");
 
 			Assert.That(condition, Is.EqualTo(true));
 			Assert.That(itor, Is.EqualTo(11));

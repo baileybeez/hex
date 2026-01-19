@@ -16,6 +16,7 @@ namespace Hex.Arcanum.Common
 		NumberLiteral = 10,
 		BooleanLiteral = 11,
 		StringLiteral = 12,
+		CharLiteral = 13,
 
 		VariableConjuration = 20,
 		IfStatement = 21,

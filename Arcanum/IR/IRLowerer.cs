@@ -9,9 +9,11 @@ namespace Hex.Arcanum.IR
 		private List<IRInst> _instList = new();
 		private int _tempIndex = 0;
 		private int _labelIndex = 0;
+		private int _strIndex = 0;
 
 		private string NewTemp() => $"t{_tempIndex++}";
 		private string NewLabel() => $"L_{_labelIndex++}";
+		private string NewString() => $"STR_{_strIndex++}";
 
 		public IRLowerer()
 		{
@@ -23,6 +25,7 @@ namespace Hex.Arcanum.IR
 			_instList.Clear();
 			_tempIndex = 0;
 			_labelIndex = 0;
+			_strIndex = 0;
 		}
 
 		public List<IRInst> Run(Scope rootScope)

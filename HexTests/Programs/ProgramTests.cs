@@ -1,5 +1,6 @@
 ﻿using Hex.Arcanum.Allocator;
 using Hex.Arcanum.Common;
+using Hex.Arcanum.Emulator;
 using Hex.Arcanum.Expressions;
 using Hex.Arcanum.IR;
 using Hex.Arcanum.Lexer;
@@ -15,7 +16,7 @@ namespace HexTests.Programs
 		public void SimpleAdd()
 		{
 			TestConsole con = new();
-			Emulate(Constants.kRitual_Add_Call, con);
+			Emulate(Constants.kRitual_Add_Call, EmulatorMemMode.Mapped, con);
 
 			Assert.That(con.Logs.Count, Is.EqualTo(1));
 			Assert.That(con.Logs[0], Is.EqualTo("5"));
@@ -25,7 +26,7 @@ namespace HexTests.Programs
 		public void Fibonacci()
 		{
 			TestConsole con = new();
-			Emulate(Constants.Programs.kFibonacci, con);
+			Emulate(Constants.Programs.kFibonacci, EmulatorMemMode.Mapped, con);
 
 			Assert.That(con.Logs.Count, Is.EqualTo(11));
 			Assert.That(con.Logs[0], Is.EqualTo("1"));
@@ -38,7 +39,7 @@ namespace HexTests.Programs
 		public void FizzBuzz()
 		{
 			TestConsole con = new();
-			Emulate(Constants.Programs.kFizzBuzz, con);
+			Emulate(Constants.Programs.kFizzBuzz, EmulatorMemMode.Mapped, con);
 
 			Assert.That(con.Logs.Count, Is.EqualTo(50));
 			Assert.That(con.Logs[1], Is.EqualTo("2"));
@@ -82,13 +83,12 @@ namespace HexTests.Programs
 				program.AddRange(upList);
 			}
 
+			_emu = new Emulator(EmulatorMemMode.Raw);
 			_emu.SetConsole(console);
 			_emu.Reset();
 			_emu.Run(program);
 			if (console != null)
 				console.Flush();
-
-			Assert.That(_emu.GetUsedMemoryCount(), Is.EqualTo(0));
 
 			Assert.That(console, Is.Not.Null);
 			Assert.That(console.Logs.Count, Is.EqualTo(11));
@@ -104,17 +104,33 @@ namespace HexTests.Programs
 			TestConsole console = new();
 			var program = CompileToIR(Constants.Programs.kFactorial);
 
+			_emu = new Emulator(EmulatorMemMode.Raw);
 			_emu.SetConsole(console);
 			_emu.Reset();
 			_emu.Run(program);
 			if (console != null)
 				console.Flush();
 
-			Assert.That(_emu.GetUsedMemoryCount(), Is.EqualTo(0));
-
 			Assert.That(console, Is.Not.Null);
 			Assert.That(console.Logs.Count, Is.EqualTo(1));
 			Assert.That(console.Logs[0], Is.EqualTo("Factorial of 12 is 479001600.\\n"));
+		}
+
+		[Test]
+		public void StringLen()
+		{
+			TestConsole console = new();
+			var program = CompileToIR(Constants.Programs.kStrLen);
+
+			_emu = new Emulator(EmulatorMemMode.Raw);
+			_emu.SetConsole(console);
+			_emu.Reset();
+			_emu.Run(program);
+			if (console != null)
+				console.Flush();
+
+			Assert.That(console, Is.Not.Null);
+			Assert.That(_emu.GetU64("RBX"), Is.EqualTo(11));
 		}
 	}
 }

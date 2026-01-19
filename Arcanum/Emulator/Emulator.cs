@@ -4,15 +4,23 @@ using Hex.Arcanum.Interfaces;
 
 namespace Hex.Arcanum.Emulator
 {
+	public enum EmulatorMemMode
+	{
+		Raw = 1, 
+		Mapped = 2,
+	}
+
 	public sealed partial class Emulator
 	{
 		private readonly List<IRInst> _instList = new();
 		private Dictionary<string, int> _labelMap = new();
 		private IConsole? _console = null;
 		private int _ip = 0;
+		private EmulatorMemMode _memMode;
 
-		public Emulator() 
+		public Emulator(EmulatorMemMode mem) 
 		{
+			_memMode = mem;
 			SetupHandlerMap();
 		}
 
@@ -21,11 +29,9 @@ namespace Hex.Arcanum.Emulator
 			_console = console;
 		}
 
-		public int MemCount() => _memory.Count;
-
 		public void Reset()
 		{
-			_memory.Clear();
+			ClearMemory();
 		}
 
 		public void Run(List<IRInst> irList)
@@ -50,20 +56,6 @@ namespace Hex.Arcanum.Emulator
 				EmulateInstruction(_instList[_ip]);
 				_ip++;
 			}
-		}
-
-		public object GetLastMemoryValue()
-		{
-			if (_memory.Count > 0)
-				return GetValue(_memory.Keys.Last());
-
-			return "";
-		}
-
-		public void DumpMemory()
-		{
-			foreach (string key in _memory.Keys)
-				Console.WriteLine($"{key}\t: {_memory[key]}");
 		}
 	}
 }

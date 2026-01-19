@@ -17,17 +17,27 @@ namespace Hex.Arcanum.IR
 
 		public void PopScope() { _scopeStack.Pop(); }
 
-		public void AddVar(string varName, string tempName)
+		public Variable AddVariable(string varName, VariableTypes varType, VariableFlags varFlag)
 		{
-			_scopeStack.Peek().Add(varName, tempName);
+			return _scopeStack.Peek().AddVariable(varName, varType, varFlag);
 		}
 
-		public string? LookupVar(string varName)
+		public Variable? LookupVariable(string varName)
+		{
+			return _scopeStack.Peek().LookupVariable(varName);
+		}
+
+		public void AddMappedVar(string varName, string tempName)
+		{
+			_scopeStack.Peek().AddMappedVar(varName, tempName);
+		}
+
+		public string? LookupMappedVar(string varName)
 		{
 			if (_scopeStack.Count == 0) 
 				return null;
 
-			return _scopeStack.Peek().Lookup(varName);
+			return _scopeStack.Peek().LookupMappedVar(varName);
 		}
 	}
 }

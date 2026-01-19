@@ -30,7 +30,7 @@ namespace Hex.Arcanum.Emulator
 			if (!_labelMap.TryGetValue(inst.leftOperand, out int ptr))
 				return;
 
-			bool b = GetBool(GetValue(inst.result));
+			bool b = GetBool(inst.result);
 			if (b == false)
 				_ip = ptr - 1; // NOTE: Emu loop will auto-increment IP after this command
 		}
@@ -43,7 +43,7 @@ namespace Hex.Arcanum.Emulator
 			if (!_labelMap.TryGetValue(inst.leftOperand, out int ptr))
 				return;
 
-			bool b = GetBool(GetValue(inst.result));
+			bool b = GetBool(inst.result);
 			if (b == true)
 				_ip = ptr - 1; // NOTE: Emu loop will auto-increment IP after this command
 		}

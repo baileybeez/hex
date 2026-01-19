@@ -13,6 +13,16 @@ namespace Hex.Arcanum.Parser
 				throw new IdentifierReusedException(identifier, "variable");
 		}
 
+		public Variable AddVar(string identifier, VariableTypes type, VariableFlags flag)
+		{
+			return _scopeStack.Peek().AddVariable(identifier, type, flag);
+		}
+
+		public Variable? LookupVar(string identifier)
+		{
+			return _scopeStack.Peek().LookupVariable(identifier);
+		}
+
 		public Scope CreateScope(ScopeTypes scopeType)
 		{
 			var scope = new Scope(_scopeStack.Peek(), scopeType);

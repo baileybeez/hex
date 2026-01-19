@@ -27,5 +27,16 @@ namespace HexTests.ParserTests
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.UnaryOp));
 			AssertUnaryIs(child, UnaryOperatorTypes.Diminish);
 		}
+
+		[Test]
+		public void DeRef()
+		{
+			var scope = Parse(Constants.kDeRefPointer);
+			var child = scope.Children.First();
+
+			Assert.That(child, Is.Not.Null);
+			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.UnaryOp));
+			AssertUnaryIs(child, UnaryOperatorTypes.Reveal);
+		}
 	}
 }

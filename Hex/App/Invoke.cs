@@ -25,7 +25,7 @@ namespace Hex.App
 			{
 				List<IRInst> irList = ProcessInputFile();
 				var console = new StandardConsole();
-				var emulator = new Emulator();
+				var emulator = new Emulator(EmulatorMemMode.Raw);
 
 				emulator.SetConsole(console);
 				emulator.Reset();

@@ -42,6 +42,11 @@ You can run any of the included [examples](./examples/) via the CLI:
 ⟤
 ```
 
+This can also be written without line breaks as: 
+``` utf-8
+𝜙⚝ ᛗᚫᛇᚾ → 🝗 ◯⟥ 🝣 🜂 🜔 ᚫ ← 1 🝣 🜂 🜔 ᛒ ← 1 🝣 🜂 🜔 ᛇ ← ᛒ + ᚫ ⯝ ᛇ ⟤
+```
+
 ## Language Reference
 
 > [!WARNING]
@@ -49,7 +54,7 @@ You can run any of the included [examples](./examples/) via the CLI:
 
 ### I. Identifiers
 
-All identifiers (functions and variables) **must** be named with the a _slightly_ Elder Furthark Runic Alphabet. Those runes are as follows: 
+All identifiers (functions and variables) **must** be named with the a _slightly_ modified Elder Furthark Runic Alphabet. Those runes are as follows: 
 ```
 utf-8
 ᚫ ᛒ ᚦ ᛞ ᛖ ᚠ ᚷ ᚺ ᛇ ᛃ ᚲ ᛚ ᛗ ᚾ ᛟ ᛈ ᛰ ᚱ ᛊ ᛏ ᚢ ᚹ ᛝ ᚯ ᛸ ᛉ

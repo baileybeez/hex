@@ -10,7 +10,12 @@ namespace Hex.Arcanum.IR
 		{
 			var conj = AssertValid<NamedStatement>(expr);
 
-			var mapped = LookupVar(conj.Name);
+			string pfx = "";
+			Variable? var = LookupVariable(conj.Name);
+			if (var == null)
+				throw new HexException($"Variable '{conj.Name}' used prior to being conjured.");
+
+			var mapped = LookupMappedVar(conj.Name);
 			if (mapped != null)
 				return mapped;
 

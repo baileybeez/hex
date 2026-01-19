@@ -9,7 +9,7 @@ namespace HexTests.Compilation
 			var prog = CompileFrom(Constants.kRitual_Add);
 
 			Assert.That(prog, Is.Not.Null);
-			Assert.That(prog.Count, Is.EqualTo(10));
+			Assert.That(prog.Count, Is.EqualTo(13));
 		}
 
 		[Test]
@@ -18,16 +18,17 @@ namespace HexTests.Compilation
 			var prog = CompileFrom(Constants.Programs.kSimpleAdd);
 
 			Assert.That(prog, Is.Not.Null);
-			Assert.That(prog.Count, Is.EqualTo(27));
+			Assert.That(prog.Count, Is.EqualTo(30));
 		}
 
 		[Test]
  		public void FibonacciCompilation()
 		{
+			//Assert.Ignore();
 			var prog = CompileFrom(Constants.Programs.kFibonacci);
 
 			Assert.That(prog, Is.Not.Null);
-			Assert.That(prog.Count, Is.EqualTo(40));
+			Assert.That(prog.Count, Is.EqualTo(46));
 		}
 	}
 }

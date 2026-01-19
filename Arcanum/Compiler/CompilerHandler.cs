@@ -22,7 +22,11 @@ namespace Hex.Arcanum.Compiler
 			_handlerMap.Add(OpCode.Return, HandleReturn);
 
 			_handlerMap.Add(OpCode.LoadU64Const, HandleLoadConst);
-			_handlerMap.Add(OpCode.Copy, HandleCopy);
+			_handlerMap.Add(OpCode.LoadStringConst, HandleLoadConst);
+			_handlerMap.Add(OpCode.CopyU64, HandleCopyU64);
+			_handlerMap.Add(OpCode.CopyChar, HandleCopyChar);
+			_handlerMap.Add(OpCode.CopyString, HandleCopyString);
+
 			_handlerMap.Add(OpCode.CopyToReg, HandleCopyToReg);
 			_handlerMap.Add(OpCode.CopyFromReg, HandleCopyFromReg);
 

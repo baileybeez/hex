@@ -11,6 +11,8 @@ namespace Hex.Arcanum.Expressions
 
 		Amplify = 10,
 		Diminish = 11,
+
+		Reveal = 20,
 	}
 
 	public sealed class UnaryOperation : Expression
@@ -32,6 +34,7 @@ namespace Hex.Arcanum.Expressions
 				LexemeTypes.Bang => UnaryOperatorTypes.Invert,
 				LexemeTypes.Amplify => UnaryOperatorTypes.Amplify,
 				LexemeTypes.Diminish => UnaryOperatorTypes.Diminish,
+				LexemeTypes.Reveal => UnaryOperatorTypes.Reveal,
 				_ => throw new HexException($"Unhandled unary operator '{opType}'")
 			};
 		}

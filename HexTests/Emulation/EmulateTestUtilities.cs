@@ -11,9 +11,9 @@ namespace HexTests.Emulation
 {
 	public class EmulateTestUtilities
 	{
-		protected Emulator _emu = new Emulator();
+		protected Emulator _emu = new Emulator(EmulatorMemMode.Raw);
 
-		public void Emulate(string src, IConsole? console = null)
+		public void Emulate(string src, EmulatorMemMode memMode, IConsole? console = null)
 		{
 			var lexer = new Lexer();
 			var parse = new Parser();
@@ -23,16 +23,12 @@ namespace HexTests.Emulation
 			var scope = parse.Run(lexList);
 			var irList = lower.Run(scope);
 
+			_emu = new Emulator(memMode);
 			_emu.SetConsole(console);
 			_emu.Reset();
 			_emu.Run(irList);
 			if (console != null)
 				console.Flush();
-		}
-
-		public UInt64 U64Val(string name)
-		{
-			return _emu.GetU64(_emu.GetValue(name));
 		}
 
 		public List<IRInst> CompileToIR(string src)

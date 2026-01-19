@@ -13,8 +13,7 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				throw new HexException("No value provided.");
 
-			object val = GetValue(inst.leftOperand);
-			UInt64 u64 = GetU64(val);
+			UInt64 u64 = GetU64(inst.leftOperand);
 
 			SetRegister(inst.result, u64);
 		}

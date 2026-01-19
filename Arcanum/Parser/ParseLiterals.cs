@@ -14,5 +14,22 @@ namespace Hex.Arcanum.Parser
 
 			return new U64Literal(n);
 		}
+		
+		public Expression? ParseCharLiteral()
+		{
+			Lexeme lex = Require(LexemeTypes.Char);
+			char cb = ' ';
+			if (lex.Text.Length == 1)
+				cb = lex.Text[0];
+
+			return new CharLiteral(cb);
+		}
+
+		public Expression? ParseStringLiteral()
+		{
+			Lexeme lex = Require(LexemeTypes.String);
+			
+			return new StringLiteral(lex.Text);
+		}
 	}
 }

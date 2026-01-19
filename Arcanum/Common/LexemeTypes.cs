@@ -7,12 +7,10 @@ namespace Hex.Arcanum.Common
 		Unknown = 0,
 		Keyword = 1,
 		Identifier = 2,
-		Symbol = 3,
-		Number = 4,
-		String = 5,
-		NewLine = 6,
-		EOF = 7,
-		Whisper = 8,
+		Symbol = 3,		
+		NewLine = 4,
+		EOF = 5,
+		Whisper = 6,
 
 		// arithmetic
 		Plus = 10,
@@ -63,6 +61,11 @@ namespace Hex.Arcanum.Common
 
 		EntryPoint = 77,
 
+		// vars
+		Number = 80,
+		Char = 81,
+		String = 82,
+
 		// elements
 		Aether = 91,
 		Air = 92,
@@ -73,5 +76,10 @@ namespace Hex.Arcanum.Common
 		// var types
 		Salt = 100,
 		Ash = 101,
+		Sulfur = 102,
+		Brimstone = 103,
+
+		Anchor = 110,
+		Reveal = 111, 
 	}
 }

@@ -31,11 +31,11 @@ namespace Hex.Arcanum.IR
 			Emit(OpCode.Call, "RAX", $"func_{call.FunctionName}", argCount.ToString());
 			if (!String.IsNullOrEmpty(call.RetVar))
 			{
-				string? varTemp = LookupVar(call.RetVar);
+				string? varTemp = LookupMappedVar(call.RetVar);
 				if (varTemp == null)
 				{
 					varTemp = NewTemp();
-					AddVar(call.RetVar, varTemp);
+					AddMappedVar(call.RetVar, varTemp);
 				}
 
 				Emit(OpCode.CopyFromReg, varTemp, "RAX");

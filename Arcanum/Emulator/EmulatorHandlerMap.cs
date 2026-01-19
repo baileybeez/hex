@@ -11,7 +11,13 @@ namespace Hex.Arcanum.Emulator
 		{
 			_handlerMap.Clear();
 			_handlerMap[OpCode.LoadU64Const] = LoadU64Const;
-			_handlerMap[OpCode.Copy] = CopyU64;
+			_handlerMap[OpCode.LoadCharConst] = LoadCharConst;
+			_handlerMap[OpCode.LoadStringConst] = LoadStringConst;
+
+			_handlerMap[OpCode.CopyU64] = CopyU64;
+			_handlerMap[OpCode.CopyChar] = CopyChar;
+			_handlerMap[OpCode.CopyString] = CopyString;
+			_handlerMap[OpCode.CopyByte] = CopyByte;
 
 			_handlerMap[OpCode.Add] = ArithmeticOp;
 			_handlerMap[OpCode.Sub] = ArithmeticOp;

@@ -16,6 +16,7 @@ namespace Hex.Arcanum.Lexer
 		}
 
 		public string Value() => _accum.ToString();
+		public int Len() => _accum.Length;
 
 		public void Push(Rune rune) => _accum.Append(rune);
 
