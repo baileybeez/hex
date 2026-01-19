@@ -9,7 +9,9 @@ namespace HexTests.ParserTests
 		public void If()
 		{
 			var list = Parse(Constants.kSimpleIfStatement);
-			var child = list.Children.FirstOrDefault();
+
+			Assert.That(list.Children.Count, Is.EqualTo(2));
+			var child = list.Children.ElementAt(1);
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.IfStatement));
@@ -24,7 +26,9 @@ namespace HexTests.ParserTests
 		public void While()
 		{
 			var list = Parse(Constants.kSimpleWhileStatement);
-			var child = list.Children.FirstOrDefault();
+
+			Assert.That(list.Children.Count, Is.EqualTo(2));
+			var child = list.Children.ElementAt(1);
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.WhileStatement));
@@ -56,7 +60,9 @@ namespace HexTests.ParserTests
 		public void IfElse()
 		{
 			var list = Parse(Constants.kSimpleIfElseStatement);
-			var child = list.Children.FirstOrDefault();
+
+			Assert.That(list.Children.Count, Is.EqualTo(2));
+			var child = list.Children.ElementAt(1);
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.IfStatement));
@@ -70,8 +76,10 @@ namespace HexTests.ParserTests
 		[Test]
 		public void IfElseIf()
 		{
-			var list = Parse(Constants.kSimpleIfElseIfStatement); 
-			var child = list.Children.FirstOrDefault();
+			var list = Parse(Constants.kSimpleIfElseIfStatement);
+
+			Assert.That(list.Children.Count, Is.EqualTo(2));
+			var child = list.Children.ElementAt(1);
 
 			Assert.That(child, Is.Not.Null);
 			Assert.That(child.Type, Is.EqualTo(ExpressionTypes.IfStatement));

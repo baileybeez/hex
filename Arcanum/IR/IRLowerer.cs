@@ -25,6 +25,7 @@ namespace Hex.Arcanum.IR
 			_instList.Clear();
 			_tempIndex = 0;
 			_labelIndex = 0;
+			_strIndex = 0;
 		}
 
 		public List<IRInst> Run(Scope rootScope)

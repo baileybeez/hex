@@ -20,57 +20,11 @@ namespace HexTests.LexerTests
 			var list = _lexer.Run(Constants.kSimpleIfStatement);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(9));
-			Assert.That(list[0].Type, Is.EqualTo(LexemeTypes.OpenScope));
-			Assert.That(list[1].Type, Is.EqualTo(LexemeTypes.If));
-			Assert.That(list[2].Type, Is.EqualTo(LexemeTypes.Identifier));
-			Assert.That(list[3].Type, Is.EqualTo(LexemeTypes.GreaterThan));
-			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Number));
-			Assert.That(list[5].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[6].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.CloseScope));
-			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.NewLine));
-		}
-
-		[Test]
-		public void IfElseStatement()
-		{
-			var list = _lexer.Run(Constants.kSimpleIfElseStatement);
-
-			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(12));
-			Assert.That(list[0].Type, Is.EqualTo(LexemeTypes.OpenScope));
-			Assert.That(list[1].Type, Is.EqualTo(LexemeTypes.If));
-			Assert.That(list[2].Type, Is.EqualTo(LexemeTypes.Identifier));
-			Assert.That(list[3].Type, Is.EqualTo(LexemeTypes.GreaterThan));
-			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Number));
-			Assert.That(list[5].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[6].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.Else));
-			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[9].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.CloseScope));
-			Assert.That(list[11].Type, Is.EqualTo(LexemeTypes.NewLine));
-		}
-
-		[Test]
-		public void IfElseIfStatement()
-		{
-			var list = _lexer.Run(Constants.kSimpleIfElseIfStatement);
-
-			Assert.That(list, Is.Not.Null);
 			Assert.That(list.Count, Is.EqualTo(16));
-			Assert.That(list[0].Type, Is.EqualTo(LexemeTypes.OpenScope));
-			Assert.That(list[1].Type, Is.EqualTo(LexemeTypes.If));
-			Assert.That(list[2].Type, Is.EqualTo(LexemeTypes.Identifier));
-			Assert.That(list[3].Type, Is.EqualTo(LexemeTypes.GreaterThan));
-			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Number));
-			Assert.That(list[5].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[6].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.ElseIf));
+			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.OpenScope));
 			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.If));
 			Assert.That(list[9].Type, Is.EqualTo(LexemeTypes.Identifier));
-			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.LessThan));
+			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.GreaterThan));
 			Assert.That(list[11].Type, Is.EqualTo(LexemeTypes.Number));
 			Assert.That(list[12].Type, Is.EqualTo(LexemeTypes.NewLine));
 			Assert.That(list[13].Type, Is.EqualTo(LexemeTypes.NewLine));
@@ -79,21 +33,67 @@ namespace HexTests.LexerTests
 		}
 
 		[Test]
+		public void IfElseStatement()
+		{
+			var list = _lexer.Run(Constants.kSimpleIfElseStatement);
+
+			Assert.That(list, Is.Not.Null);
+			Assert.That(list.Count, Is.EqualTo(19));
+			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.OpenScope));
+			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.If));
+			Assert.That(list[9].Type, Is.EqualTo(LexemeTypes.Identifier));
+			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.GreaterThan));
+			Assert.That(list[11].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(list[12].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[13].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[14].Type, Is.EqualTo(LexemeTypes.Else));
+			Assert.That(list[15].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[16].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[17].Type, Is.EqualTo(LexemeTypes.CloseScope));
+			Assert.That(list[18].Type, Is.EqualTo(LexemeTypes.NewLine));
+		}
+
+		[Test]
+		public void IfElseIfStatement()
+		{
+			var list = _lexer.Run(Constants.kSimpleIfElseIfStatement);
+
+			Assert.That(list, Is.Not.Null);
+			Assert.That(list.Count, Is.EqualTo(23));
+			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.OpenScope));
+			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.If));
+			Assert.That(list[9].Type, Is.EqualTo(LexemeTypes.Identifier));
+			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.GreaterThan));
+			Assert.That(list[11].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(list[12].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[13].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[14].Type, Is.EqualTo(LexemeTypes.ElseIf));
+			Assert.That(list[15].Type, Is.EqualTo(LexemeTypes.If));
+			Assert.That(list[16].Type, Is.EqualTo(LexemeTypes.Identifier));
+			Assert.That(list[17].Type, Is.EqualTo(LexemeTypes.LessThan));
+			Assert.That(list[18].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(list[19].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[20].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[21].Type, Is.EqualTo(LexemeTypes.CloseScope));
+			Assert.That(list[22].Type, Is.EqualTo(LexemeTypes.NewLine));
+		}
+
+		[Test]
 		public void WhileStatement()
 		{
 			var list = _lexer.Run(Constants.kSimpleWhileStatement);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(9));
-			Assert.That(list[0].Type, Is.EqualTo(LexemeTypes.OpenScope));
-			Assert.That(list[1].Type, Is.EqualTo(LexemeTypes.While));
-			Assert.That(list[2].Type, Is.EqualTo(LexemeTypes.Identifier));
-			Assert.That(list[3].Type, Is.EqualTo(LexemeTypes.GreaterThan));
-			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Number));
-			Assert.That(list[5].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[6].Type, Is.EqualTo(LexemeTypes.NewLine));
-			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.CloseScope));
-			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list.Count, Is.EqualTo(16));
+			Assert.That(list[7].Type, Is.EqualTo(LexemeTypes.OpenScope));
+			Assert.That(list[8].Type, Is.EqualTo(LexemeTypes.While));
+			Assert.That(list[9].Type, Is.EqualTo(LexemeTypes.Identifier));
+			Assert.That(list[10].Type, Is.EqualTo(LexemeTypes.GreaterThan));
+			Assert.That(list[11].Type, Is.EqualTo(LexemeTypes.Number));
+			Assert.That(list[12].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[13].Type, Is.EqualTo(LexemeTypes.NewLine));
+			Assert.That(list[14].Type, Is.EqualTo(LexemeTypes.CloseScope));
+			Assert.That(list[15].Type, Is.EqualTo(LexemeTypes.NewLine));
 		}
 
 

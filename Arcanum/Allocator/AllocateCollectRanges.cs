@@ -6,6 +6,9 @@ namespace Hex.Arcanum.Allocator
 	public sealed partial class RegisterAllocator
 	{
 		public const string kStrPrefix = "STR_";
+		public const string kDeRefPrefix = "[";
+		public const string kDeRefSuffix = "]";
+		public const string kTempVarPrefix = "t";
 
 		private readonly Dictionary<string, LiveRange> _rangeMap = new();
 		
@@ -47,6 +50,8 @@ namespace Hex.Arcanum.Allocator
 		{
 			if (entry.StartsWith(kStrPrefix))
 				return;
+			else if (IsDereference(entry))
+				entry = UnwrapDeref(entry);
 
 			if (!_rangeMap.ContainsKey(entry))
 				_rangeMap.Add(entry, new LiveRange(entry, idx));
@@ -73,7 +78,9 @@ namespace Hex.Arcanum.Allocator
 
 		public bool IsValidVariable(string str)
 		{
-			if (str.StartsWith("t"))
+			if (str.StartsWith(kTempVarPrefix))
+				return true;
+			if (IsDereference(str))
 				return true;
 			else if (Lexer.Lexer.IsIdentifier(str))
 				return true;

@@ -27,6 +27,7 @@ namespace HexTests.IR
 		public void Invokation()
 		{
 			var opList = new OpCode[] { 
+				OpCode.LoadU64Const, 
 				OpCode.SetupCall, 
 				OpCode.CopyToReg, 
 				OpCode.Call 
@@ -96,6 +97,7 @@ namespace HexTests.IR
 		public void InvokeIntoVariable()
 		{
 			var opList = new OpCode[] {
+				OpCode.LoadU64Const,
 				OpCode.SetupCall,
 				OpCode.CopyToReg,
 				OpCode.Call, 

@@ -9,14 +9,23 @@ namespace Hex.Arcanum.Emulator
 			if (_console == null || inst.leftOperand == null)
 				return;
 
-			string? text = null;
-			if (!TryGetValue(inst.leftOperand, out object val))
-				text = inst.leftOperand;
-			else if (val != null)
-				text = val.ToString();
+			string str = "";
+			UInt64 addr = LookupString(inst.leftOperand);
+			if (addr != Emulator.kNullRef)
+				str = ReadString(addr);
+			else
+				str = GetU64(inst.leftOperand).ToString();
 
-			if (text != null)
-				_console.Write(text);
+			_console.Write(str);
+
+			// string? text = null;
+			// if (!TryGetValue(inst.leftOperand, out object val))
+			// 	text = inst.leftOperand;
+			// else if (val != null)
+			// 	text = val.ToString();
+			// 
+			// if (text != null)
+			// 	_console.Write(text);
 		}
 	}
 }

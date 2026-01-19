@@ -22,29 +22,34 @@ namespace HexTests
 		public const string kVarName = "ᚫ";
 		public const string kConjureVar = "🝣 🜂 🜔 ᚫ";
 		public const string kConjureVarAssign = "🝣 🜃 🜔 ᚫ ← 1";
+
 		public const string kConjurePointer = "🝣 🜀 🜔 ᚫ ← ⌖ ᛖ";
+		public const string kDeRefPointer = "⌾ ᚫ";
+
 		public const string kConjureChar = "🝣 🜂 🜍 ᚫ ← 'A'";
 		public const string kConjureString = "🝣 🜂 🜏 ᚫ ← \"hello world\"";
 		public const string kAssignmentScript = "🝣 🜂 🜔 ᚫ \r\n ᚫ ← 1";
 
-		public const string kSimpleIfStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟤ ";
-		public const string kSimpleIfElseIfStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟐ ↝ ᛖ < 0 \r\n \r\n ⟤ ";
-		public const string kSimpleIfElseStatement = "⟥ ↝ ᛖ > 0 \r\n \r\n ⟡ \r\n \r\n ⟤ ";
-		public const string kSimpleWhileStatement = "⟥ ↻ ᛖ > 0 \r\n \r\n ⟤";
+		public const string kSimpleIfStatement = "🝣 🜂 🜔 ᛖ ← 1 \r\n ⟥ ↝ ᛖ > 0 \r\n \r\n ⟤ ";
+		public const string kSimpleIfElseIfStatement = "🝣 🜂 🜔 ᛖ ← 1 \r\n ⟥ ↝ ᛖ > 0 \r\n \r\n ⟐ ↝ ᛖ < 0 \r\n \r\n ⟤ ";
+		public const string kSimpleIfElseStatement = "🝣 🜂 🜔 ᛖ ← 1 \r\n ⟥ ↝ ᛖ > 0 \r\n \r\n ⟡ \r\n \r\n ⟤ ";
+		public const string kSimpleWhileStatement = "🝣 🜂 🜔 ᛖ ← 1 \r\n ⟥ ↻ ᛖ > 0 \r\n \r\n ⟤";
 		public const string kSimpleForStatement = "⟥ ⇄ ᛖ 0 ⇒ 10 \r\n \r\n ⟤";
 
 		public const string kRitualDeclaration = "⚝ ᚠᛇᛒ → 🝗\r\n🝣🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥ \r\n \r\n ⟤ ";
 		public const string kRitualDeclarationLargeArgCount = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n   🝀 🜃 🜔 ᛒ ↷\r\n   🝀 🜃 🜔 ᚦ ↷\r\n   🝀 🜃 🜔 ᛞ ↷\r\n   🝀 🜃 🜔 ᛖ ↷\r\n   🝀 🜃 🜔 ᚠ ↷\r\n   🝀 🜃 🜔 ᚷ ↷\r\n   🝀 🜃 🜔 ᚺ ↷\r\n◯⟥\r\n⟤ ";
-		public const string kRitualInvokation = "🝣🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ";
-		public const string kRitualInvokationIntoVar = "🝣🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ ⇒ ᚫ";
+		public const string kRitualInvokation = "🝣🝥\r\n   🝀 12 🝥 ↷\r\n   🝠 ᚠᛇᛒ";
+		public const string kRitualInvokationIntoVar = "🝣🝥\r\n   🝀 12 🝥 ↷\r\n   🝠 ᚠᛇᛒ ⇒ ᚫ";
 		public const string kRitualInvokationLargeArgCount = "🝣 🝥\r\n🝀 1 🝥 ↷\r\n🝀 2 🝥 ↷\r\n🝀 3 🝥 ↷\r\n🝀 4 🝥 ↷\r\n🝀 5 🝥 ↷\r\n🝀 6 🝥 ↷\r\n🝀 7 🝥 ↷\r\n🝀 8 🝥 ↷\r\n🝠 ᚠᛇᛒ ";
 
 		public const string kRitual_Add = "⚝ ᚫᛞᛞ → 🜔\r\n🝣🝥\r\n   🝀 🜂 🜔 ᚫ ↷\r\n   🝀 🜂 🜔 ᛒ ↷\r\n◯⟥\r\n   🝑 ᛒ + ᚫ\r\n⟤ ";
-		public const string kRitual_Add_Call = "⚝ ᚫᛞᛞ → 🜔\r\n🝣🝥\r\n   🝀 🜂 🜔 ᚫ ↷\r\n   🝀 🜂 🜔 ᛒ ↷\r\n◯⟥\r\n   🝑 ᛒ + ᚫ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣🝥\r\n   🝀 2 🝥 ↷\r\n   🝀 3 🝥 ↷\r\n   🝠 ᚫᛞᛞ ⇒ ᚫ\r\n   ⯝ ᚫ\r\n⟤\r\n";
+		public const string kRitual_Add_Call = "⚝ ᚫᛞᛞ → 🜔\r\n🝣🝥\r\n   🝀 🜂 🜔 ᚫ ↷\r\n   🝀 🜂 🜔 ᛒ ↷\r\n◯⟥\r\n   🝑 ᛒ + ᚫ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n 🝣 🜂 🜔 ᚫ \r\n 🝣🝥\r\n   🝀 2 🝥 ↷\r\n   🝀 3 🝥 ↷\r\n   🝠 ᚫᛞᛞ ⇒ ᚫ\r\n   ⯝ ᚫ\r\n⟤\r\n";
 		public const string kRitual_NestedCalls = "⚝ ᚠᛟᛟ → 🜔\r\n🝣🝥\r\n◯⟥\r\n   🝑 5\r\n⟤\r\n\r\n⚝ ᚠᛟᛟᚫᛞᛞ → 🜔\r\n🝣🝥\r\n   🝀 🜂 🜔 ᛒ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ \r\n   🝣 🝥 🝠 ᚠᛟᛟ ⇒ ᚫ\r\n\r\n   🝑 ᛒ + ᚫ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ \r\n   🝣 🜂 🜔 ᛒ ← 4\r\n\r\n   🝣 🝥 🝠 ᚠᛟᛟ ⇒ ᚫ\r\n\r\n   🝣 🝥\r\n   🝀 ᛒ 🝥 ↷\r\n   🝠 ᚠᛟᛟᚫᛞᛞ\r\n⟤ ";
 
 		public const string kConsoleOutput = "⯝ \"hello world\"";
 		public const string kStringWithCRLF = "⯝ \"1\n\"";
+
+		public const string kStringPointer = "🝣 🜂 🜏 ᚫ ← \"hello world\"\r\n   🝣 🜂 🜔 ᛇ ← ᚫ + 1 ";
 
 		public static readonly ProgramListings Programs = new();
 	}
@@ -56,6 +61,6 @@ namespace HexTests
 		public readonly string kFibonacci = "⚝ ᚠᛇᛒ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚷᛖᚾ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚫ ← 1\r\n   🝣 🜂 🜔 ᛒ ← 1\r\n   🝣 🜂 🜔 ᚲ \r\n\r\n   🝣 🜂 🜔 ᚲᛸᚲᛚᛖ ← ᚷᛖᚾ\r\n   \r\n   ⯝ \"1\n\"\r\n   ⟥ ↻ ᚲᛸᚲᛚᛖ > 0 \r\n      ᚲ ← ᛒ + ᚫ\r\n      ᚫ ← ᛒ\r\n      ᛒ ← ᚲ\r\n\r\n      ⯝ ᚫ\r\n      ⯝ \"\n\"\r\n      ⇓ ᚲᛸᚲᛚᛖ\r\n   ⟤\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᚷᛖᚾ ← 10\r\n\r\n   🝣 🝥\r\n   🝀 ᚷᛖᚾ 🝥 ↷\r\n   🝠 ᚠᛇᛒ\r\n⟤\r\n ";
 		public readonly string kFactorial = "⚝ ᚠᚫᚲᛏ → 🜔\r\n🝣 🝥\r\n   🝀 🜃 🜔 ᚫ ↷\r\n◯⟥\r\n   🝣 🜂 🜔 ᚠ ← 1\r\n   ⟥ ⇄ ᛇ 1 ⇒ ᚫ\r\n      ᚠ ← ᚠ * ᛇ\r\n   ⟤\r\n\r\n   🝑 ᚠ\r\n⟤\r\n\r\n𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜔 ᛇ ← 12\r\n   🝣 🜂 🜔 ᚫ ← 0\r\n\r\n   🝣 🝥\r\n   🝀 ᛇ 🝥 ↷\r\n   🝠 ᚠᚫᚲᛏ ⇒ ᚫ\r\n   \r\n   \u2bdd \"Factorial of \"\r\n   \u2bdd ᛇ\r\n   \u2bdd \" is \"\r\n   \u2bdd ᚫ\r\n   \u2bdd \".\\n\"\r\n⟤ ";
 
-		public readonly string kStrLen = "𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜏 ᚫ ← \"hello world\"\r\n   🝣 🜂 🜔 ᛇ ← 0\r\n\r\n   ⟥ ↻ ᚫ ∄ 0 \r\n      ᚫ ← ᚫ + 1\r\n      ᛇ ← ᛇ + 1\r\n   ⟤\r\n⟤\r\n ";
+		public readonly string kStrLen = "𝜙⚝ ᛗᚫᛇᚾ → 🝗\r\n◯⟥\r\n   🝣 🜂 🜏 ᚫ ← \"hello world\"\r\n   🝣 🜂 🜔 ᛇ ← 0\r\n\r\n   ⟥ ↻ ⌾ ᚫ ∄ 0 \r\n      ᚫ ← ᚫ + 1\r\n      ᛇ ← ᛇ + 1\r\n   ⟤\r\n⟤\r\n ";
 	}
 }

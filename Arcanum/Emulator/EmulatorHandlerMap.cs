@@ -17,6 +17,7 @@ namespace Hex.Arcanum.Emulator
 			_handlerMap[OpCode.CopyU64] = CopyU64;
 			_handlerMap[OpCode.CopyChar] = CopyChar;
 			_handlerMap[OpCode.CopyString] = CopyString;
+			_handlerMap[OpCode.CopyByte] = CopyByte;
 
 			_handlerMap[OpCode.Add] = ArithmeticOp;
 			_handlerMap[OpCode.Sub] = ArithmeticOp;

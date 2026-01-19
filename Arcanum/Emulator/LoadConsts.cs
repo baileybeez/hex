@@ -1,5 +1,6 @@
 ﻿using Hex.Arcanum.Common;
 using Hex.Arcanum.Exceptions;
+using System.Net;
 
 namespace Hex.Arcanum.Emulator
 {
@@ -28,8 +29,8 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				return;
 
-			string str = inst.leftOperand;
-			SetValue(inst.result, str);
+			UInt64 addr = AllocateString(inst.leftOperand);
+			_stringTable[inst.result] = addr;
 		}
 	}
 }

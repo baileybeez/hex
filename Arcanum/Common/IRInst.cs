@@ -49,6 +49,7 @@ namespace Hex.Arcanum.Common
 		CopyU64 = 60, 
 		CopyChar = 61, 
 		CopyString = 62,
+		CopyByte = 63,
 
 		// stack
 		Push = 70,

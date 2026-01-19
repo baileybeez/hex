@@ -7,6 +7,7 @@ namespace Hex.Arcanum.Common
 
 		private static readonly Dictionary<LexemeTypes, int> _unary = new()
 		{
+			{ LexemeTypes.Reveal, 7 },
 			{ LexemeTypes.Amplify, 6 },
 			{ LexemeTypes.Diminish, 6 },
 			{ LexemeTypes.Bang, 6 }

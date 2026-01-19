@@ -33,7 +33,7 @@ namespace HexTests.ParserTests
 			Assert.That(child.FunctionName, Is.EqualTo("ᚠᛇᛒ"));
 			Assert.That(child.ParameterList.Count, Is.EqualTo(1));
 			Assert.That(child.ParameterList[0].Param, Is.Not.Null);
-			Assert.That(child.ParameterList[0].Param.Type, Is.EqualTo(ExpressionTypes.NamedType));
+			Assert.That(child.ParameterList[0].Param.Type, Is.EqualTo(ExpressionTypes.NumberLiteral));
 			Assert.That(child.ParameterList[0].Stir, Is.EqualTo(StirDirection.Clockwise));
 		}
 
@@ -69,7 +69,7 @@ namespace HexTests.ParserTests
 			Assert.That(child.FunctionName, Is.EqualTo("ᚠᛇᛒ"));
 			Assert.That(child.ParameterList.Count, Is.EqualTo(1));
 			Assert.That(child.ParameterList[0].Param, Is.Not.Null);
-			Assert.That(child.ParameterList[0].Param.Type, Is.EqualTo(ExpressionTypes.NamedType));
+			Assert.That(child.ParameterList[0].Param.Type, Is.EqualTo(ExpressionTypes.NumberLiteral));
 			Assert.That(child.ParameterList[0].Stir, Is.EqualTo(StirDirection.Clockwise));
 			Assert.That(child.RetVar, Is.EqualTo("ᚫ"));
 		}

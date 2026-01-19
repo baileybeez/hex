@@ -19,10 +19,10 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(4));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Greater));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.JumpIfFalse));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list.Count, Is.EqualTo(6));
+			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Greater));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.JumpIfFalse));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Label));
 		}
 
 		[Test]
@@ -34,12 +34,12 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(6));
-			Assert.That(list[0].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Greater));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.JumpIfFalse));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Jump));
-			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list.Count, Is.EqualTo(8));
+			Assert.That(list[2].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Greater));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.JumpIfFalse));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Jump));
+			Assert.That(list[7].opCode, Is.EqualTo(OpCode.Label));
 		}
 
 		[Test]
@@ -69,16 +69,16 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(6));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Greater));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.JumpIfFalse));
-			Assert.That(list[2].leftOperand, Is.EqualTo("L_1"));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Jump));
-			Assert.That(list[3].leftOperand, Is.EqualTo("L_0"));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[4].result, Is.EqualTo("L_1"));
-			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[5].result, Is.EqualTo("L_0"));
+			Assert.That(list.Count, Is.EqualTo(8));
+			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Greater));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.JumpIfFalse));
+			Assert.That(list[4].leftOperand, Is.EqualTo("L_1"));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Jump));
+			Assert.That(list[5].leftOperand, Is.EqualTo("L_0"));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[6].result, Is.EqualTo("L_1"));
+			Assert.That(list[7].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[7].result, Is.EqualTo("L_0"));
 		}
 
 		[Test]
@@ -90,18 +90,18 @@ namespace HexTests.IR
 			var list = lower.Run(scope);
 
 			Assert.That(list, Is.Not.Null);
-			Assert.That(list.Count, Is.EqualTo(9));
-			Assert.That(list[1].opCode, Is.EqualTo(OpCode.Greater));
-			Assert.That(list[2].opCode, Is.EqualTo(OpCode.JumpIfFalse));
-			Assert.That(list[2].leftOperand, Is.EqualTo("L_1"));
-			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Jump));
-			Assert.That(list[3].leftOperand, Is.EqualTo("L_0"));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[4].result, Is.EqualTo("L_1"));
-			Assert.That(list[4].opCode, Is.EqualTo(OpCode.Label));
-			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Less));
-			Assert.That(list[7].opCode, Is.EqualTo(OpCode.JumpIfFalse));
-			Assert.That(list[8].result, Is.EqualTo("L_0"));
+			Assert.That(list.Count, Is.EqualTo(11));
+			Assert.That(list[3].opCode, Is.EqualTo(OpCode.Greater));
+			Assert.That(list[4].opCode, Is.EqualTo(OpCode.JumpIfFalse));
+			Assert.That(list[4].leftOperand, Is.EqualTo("L_1"));
+			Assert.That(list[5].opCode, Is.EqualTo(OpCode.Jump));
+			Assert.That(list[5].leftOperand, Is.EqualTo("L_0"));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[6].result, Is.EqualTo("L_1"));
+			Assert.That(list[6].opCode, Is.EqualTo(OpCode.Label));
+			Assert.That(list[8].opCode, Is.EqualTo(OpCode.Less));
+			Assert.That(list[9].opCode, Is.EqualTo(OpCode.JumpIfFalse));
+			Assert.That(list[10].result, Is.EqualTo("L_0"));
 		}
 	}
 }

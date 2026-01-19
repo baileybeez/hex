@@ -10,8 +10,8 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null || inst.rightOperand == null)
 				throw new HexException($"One or more invalid operands for {inst.opCode} operation");
 
-			UInt64 left = GetU64(GetValue(inst.leftOperand));
-			UInt64 right = GetU64(GetValue(inst.rightOperand));
+			UInt64 left = GetU64(inst.leftOperand);
+			UInt64 right = GetU64(inst.rightOperand);
 			UInt64 res = inst.opCode switch
 			{
 				OpCode.Add => left + right,
@@ -30,7 +30,7 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				throw new HexException($"One or more invalid operands for {inst.opCode} operation");
 
-			UInt64 left = GetU64(GetValue(inst.leftOperand));			
+			UInt64 left = GetU64(inst.leftOperand);
 			SetValue(inst.result, left + 1);
 		}
 
@@ -39,7 +39,7 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				throw new HexException($"One or more invalid operands for {inst.opCode} operation");
 
-			UInt64 left = GetU64(GetValue(inst.leftOperand));
+			UInt64 left = GetU64(inst.leftOperand);
 			SetValue(inst.result, left - 1);
 		}
 	}

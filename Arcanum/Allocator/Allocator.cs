@@ -35,9 +35,36 @@ namespace Hex.Arcanum.Allocator
 				throw new Exception("IR Result cannot be assigned a null value.");
 
 			string? left = LookupAssignment(ir.leftOperand, idx);
+			if (IsDereference(ir.leftOperand))
+				left = $"[{left}]";
 			string? right = LookupAssignment(ir.rightOperand, idx);
+			if (IsDereference(ir.rightOperand))
+				right = $"[{right}]";
 
 			return new IRInst(ir.opCode, result, left, right);
+		}
+
+		public bool IsDereference(string? str)
+		{
+			if (str == null)
+				return false;
+
+			return str.StartsWith(kDeRefPrefix) && str.EndsWith(kDeRefSuffix);
+		}
+
+		// deref instructions appear as a variable wrapped with [ and ]
+		// e.g. [t0]
+		public string UnwrapDeref(string str)
+		{
+			return str.Substring(1, str.Length - 2);
+		}
+
+		public string UnwrapVar(string str)
+		{
+			if (IsDereference(str))
+				return UnwrapDeref(str);
+
+			return str;
 		}
 
 		public string? LookupAssignment(string? str, int idx)
@@ -46,12 +73,13 @@ namespace Hex.Arcanum.Allocator
 				return null;
 
 			// if there isn't an allocation entry, this is either a constant or a label
-			if (!_allocMap.ContainsKey(str))
+			string key = UnwrapVar(str);
+			if (!_allocMap.ContainsKey(key))
 				return str;
 			
-			var range = _allocMap[str];
+			var range = _allocMap[key];
 			if (idx < range.StartIdx || idx > range.EndIdx)
-				throw new HexException($"Variable '{str}' was accessed outside of viable live range.");
+				throw new HexException($"Variable '{key}' was accessed outside of viable live range.");
 
 			if (range.AssignedReg.HasValue)
 				return range.AssignedReg.Value.ToString();

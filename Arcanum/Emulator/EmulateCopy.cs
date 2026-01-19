@@ -5,16 +5,20 @@ namespace Hex.Arcanum.Emulator
 {
 	public sealed partial class Emulator
 	{
+		public void CopyByte(IRInst inst)
+		{
+			if (inst.leftOperand == null)
+				return;
+
+			SetValue(inst.result, GetByte(inst.leftOperand));
+		}
+
 		public void CopyU64(IRInst inst)
 		{
 			if (inst.leftOperand == null)
 				return;
 
-			object obj = GetValue(inst.leftOperand);
-			if (obj == null)
-				return;
-
-			SetValue(inst.result, GetU64(obj));
+			SetValue(inst.result, GetU64(inst.leftOperand));
 		}
 
 		public void CopyChar(IRInst inst)
@@ -22,11 +26,7 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				return;
 
-			object obj = GetValue(inst.leftOperand);
-			if (obj == null)
-				return;
-
-			SetValue(inst.result, GetChar(obj));
+			SetValue(inst.result, GetChar(inst.leftOperand));
 		}
 
 		public void CopyString(IRInst inst)
@@ -34,11 +34,10 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null)
 				return;
 
-			object obj = GetValue(inst.leftOperand);
-			if (obj == null)
-				return;
+			if (!_stringTable.ContainsKey(inst.leftOperand))
+				throw new HexException($"String {inst.leftOperand} was not provided!");
 
-			SetValue(inst.result, GetString(obj));
+			SetValue(inst.result, _stringTable[inst.leftOperand]);
 		}
 	}
 }

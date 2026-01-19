@@ -47,7 +47,7 @@ namespace HexTests.LexerTests
 			Assert.That(list[1].Type, Is.EqualTo(LexemeTypes.Cauldron));
 
 			Assert.That(list[3].Type, Is.EqualTo(LexemeTypes.Place));
-			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Identifier));
+			Assert.That(list[4].Type, Is.EqualTo(LexemeTypes.Number));
 			Assert.That(list[5].Type, Is.EqualTo(LexemeTypes.Cauldron));
 			Assert.That(list[6].Type, Is.EqualTo(LexemeTypes.StirCW));
 

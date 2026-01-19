@@ -27,7 +27,7 @@ namespace Hex.App
 			_lexer = new Lexer();
 			_parser = new Parser();
 			_lowerer = new IRLowerer();
-			_emu = new Emulator();
+			_emu = new Emulator(EmulatorMemMode.Raw);
 		}
 
 		public void RunRepl()
@@ -72,8 +72,8 @@ namespace Hex.App
 				_emu.Run(irList);
 
 				var entryPoint = scope.FindEntryPoint();
-				if (entryPoint == null)
-					Console.WriteLine(_emu.GetLastMemoryValue());
+				//if (entryPoint == null)
+				//	Console.WriteLine(_emu.GetLastMemoryValue());
 			}
 			catch (HexException hex)
 			{
@@ -89,11 +89,6 @@ namespace Hex.App
 			if (line == "clear")
 			{
 				_emu.Reset();
-				return true;
-			}
-			else if (line == "dump")
-			{
-				_emu.DumpMemory();
 				return true;
 			}
 			else if (line.StartsWith("set-opt"))

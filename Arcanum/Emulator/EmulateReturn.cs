@@ -9,7 +9,7 @@ namespace Hex.Arcanum.Emulator
 		{
 			var entry = _callStack.Pop();
 			if (inst.leftOperand != null && !String.IsNullOrEmpty(entry.ReturnVar))
-				SetValue(entry.ReturnVar, GetValue(inst.leftOperand));
+				SetValue(entry.ReturnVar, GetU64(inst.leftOperand));
 
 			_ip = entry.ReturnIP;
 		}

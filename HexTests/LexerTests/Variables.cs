@@ -105,5 +105,22 @@ namespace HexTests.LexerTests
 			Assert.That(list[3].Text, Is.EqualTo("ᚫ"));
 			Assert.That(list[5].Text, Is.EqualTo(ans));
 		}
+
+		[Test]
+		public void DeRefPointer()
+		{
+			var truth = new LexemeTypes[] {
+				LexemeTypes.Reveal,
+				LexemeTypes.Identifier,
+				LexemeTypes.NewLine,
+			};
+			var list = _lexer.Run(Constants.kDeRefPointer);
+
+			Assert.That(list.Count, Is.EqualTo(truth.Length));
+			for (int idx = 0; idx < truth.Length; idx++)
+				Assert.That(list[idx].Type, Is.EqualTo(truth[idx]));
+
+			Assert.That(list[1].Text, Is.EqualTo("ᚫ"));
+		}
 	}
 }

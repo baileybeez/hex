@@ -131,5 +131,28 @@ namespace HexTests.IR
 			Assert.That(finalizedIr[17].result, Is.EqualTo("R8"));
 			Assert.That(finalizedIr[21].result, Is.EqualTo("R10"));
 		}
+
+		[Test]
+		public void StringPointerAllocator()
+		{
+			var lexList = _lexer.Run(Constants.kStringPointer);
+			var scope = _parser.Run(lexList);
+
+			_lower.Reset();
+			var irList = _lower.Run(scope);
+
+			_alloc.Reset();
+			var rangeList = _alloc.ComputeLiveRanges(irList);
+			var results = _alloc.AllocateRegisters(rangeList);
+			var finalizedIr = _alloc.ProcessAllocations(irList, results);
+
+			Assert.That(finalizedIr, Is.Not.Null);
+			Assert.That(finalizedIr.Count, Is.EqualTo(5));
+			Assert.That(finalizedIr[0].result, Is.EqualTo("STR_0"));
+			Assert.That(finalizedIr[1].result, Is.EqualTo("R11"));
+			Assert.That(finalizedIr[3].leftOperand, Is.EqualTo("R11"));
+			Assert.That(finalizedIr[3].rightOperand, Is.EqualTo("R10"));
+			Assert.That(finalizedIr[4].result, Is.EqualTo("R11"));
+		}
 	}
 }

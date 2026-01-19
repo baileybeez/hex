@@ -18,6 +18,7 @@ namespace Hex.Arcanum.IR
 			if (itr == null)
 			{
 				itr = NewTemp();
+				AddVariable(frs.VarName.Name, VariableTypes.U64, VariableFlags.Volitile);
 				AddMappedVar(frs.VarName.Name, itr);
 			}
 			string truth = NewTemp();

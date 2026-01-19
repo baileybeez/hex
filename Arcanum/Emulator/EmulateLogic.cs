@@ -10,11 +10,8 @@ namespace Hex.Arcanum.Emulator
 			if (inst.leftOperand == null || inst.rightOperand == null)
 				throw new HexException($"One or more invalid operands for {inst.opCode} operation");
 
-			object objLeft = GetValue(inst.leftOperand);
-			object objRight = GetValue(inst.rightOperand);
-
-			UInt64 uLeft = GetU64(objLeft);
-			UInt64 uRight = GetU64(objRight);
+			UInt64 uLeft = GetU64(inst.leftOperand);
+			UInt64 uRight = GetU64(inst.rightOperand);
 			bool res = inst.opCode switch
 			{
 				OpCode.Equal => uLeft == uRight,
@@ -23,8 +20,8 @@ namespace Hex.Arcanum.Emulator
 				OpCode.GreaterEqual => uLeft >= uRight,
 				OpCode.Less => uLeft < uRight,
 				OpCode.LessEqual => uLeft <= uRight,
-				OpCode.And => (GetBool(objLeft) && GetBool(objRight)),
-				OpCode.Or => (GetBool(objLeft) || GetBool(objRight)),
+				OpCode.And => (GetBool(inst.leftOperand) && GetBool(inst.rightOperand)),
+				OpCode.Or => (GetBool(inst.leftOperand) || GetBool(inst.rightOperand)),
 				_ => throw new HexException($"Invalid or unsupported logic operation {inst.opCode}")
 			};
 

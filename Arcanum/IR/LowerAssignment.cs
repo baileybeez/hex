@@ -34,7 +34,7 @@ namespace Hex.Arcanum.IR
 					opCopy = OpCode.CopyChar;
 					break;
 				case VariableTypes.String:
-					opCopy = OpCode.CopyString;
+					opCopy = OpCode.CopyU64;
 					break;
 			}
 			Emit(opCopy, varTemp, valTemp);
